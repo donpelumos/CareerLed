@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent" android:background="#bbbbbb"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="70dp"
+        android:background="#bbbbbb">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="#ffffff"
+                        android:background="@color/bg_color"
+                        android:maxLines="20"
+                        android:padding="5dp"
+                        android:text="Hey. hw far longest times"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="date-time"
+                        android:textSize="14sp"
+                        android:textColor="#444444"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="left"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/picture02"
+                        android:layout_marginRight="3dp"
+                        android:scaleType="centerCrop"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="#ffffff"
+                            android:background="#75336DB7"
+                            android:padding="5dp"
+                            android:text="Hey hw far\nWhere have u been all this while. Chopping and smiling alone abi ?"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="date-time"
+                            android:textSize="14sp"
+                            android:textColor="#444444"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="end"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="#ffffff"
+                        android:background="@color/bg_color"
+                        android:maxLines="20"
+                        android:padding="5dp"
+                        android:text="I wish\nave been quite busy jare\nProject stuffs and some other group things"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="date-time"
+                        android:textSize="14sp"
+                        android:textColor="#444444"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="left"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/picture02"
+                        android:layout_marginRight="3dp"
+                        android:scaleType="centerCrop"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="#ffffff"
+                            android:background="#75336DB7"
+                            android:padding="5dp"
+                            android:text="Hey hw far that stuff we discussed the last time\nI know someone who does .NET (ASP and C#)and is willing to join\nI told him abt the stake ish and he agreed. I have given him ur contacts\nI expect that he will call u any moment from now"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="date-time"
+                            android:textSize="14sp"
+                            android:textColor="#444444"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="end"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="#ffffff"
+                        android:background="@color/bg_color"
+                        android:maxLines="20"
+                        android:padding="5dp"
+                        android:text="For real :)\n tanx man. ave been looking for a .NET developer bt couldnt find\n Got someone to handle the python while i do Java and Scala."/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="date-time"
+                        android:textSize="14sp"
+                        android:textColor="#444444"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:background="@color/bg_color"
+        android:id="@+id/sub_swiper">
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="40dp"
+            android:src="@drawable/message_icon_new"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="50dp"
+            android:gravity="center"
+            android:text="Surname\nFirstname"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:src="@drawable/abc_ic_clear_mtrl_alpha"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#00000000"
+            android:id="@+id/cancel_button"
+            android:layout_marginLeft="-45dp"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="1dp"
+        android:padding="5dp"
+        android:background="#40336DB7"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:inputType="textMultiLine"
+            android:layout_marginRight="60dp"
+            android:gravity="center_vertical"
+            android:maxLines="6"
+            android:background="#ffffff"
+            android:padding="3dp"/>
+        <Button
+            android:layout_width="55dp"
+            android:layout_marginLeft="-55dp"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:textSize="16sp"
+            android:background="@color/bg_color"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+
+</RelativeLayout>
