@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0065)http://jmsliu.com/1954/android-save-downloading-file-locally.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	
+
+<!-- Meta Images -->
+	<link rel="shortcut icon" href="http://jmsliu.com/favicon.ico" type="image/x-icon">	
+<!-- Title and External Script Integration -->
+	<title>Android Save And Load Downloading File Locally</title>
+	
+<!-- Stylesheets -->
+	<link rel="stylesheet" href="./Android Save And Load Downloading File Locally_files/reset.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Android Save And Load Downloading File Locally_files/wp_core.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Android Save And Load Downloading File Locally_files/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Android Save And Load Downloading File Locally_files/pro.css" type="text/css" media="screen">				
+
+<!-- Wordpress Stuff -->
+	<!-- <link rel="alternate" type="application/rss+xml" title="Programming Guides and Tips RSS Feed" href="http://jmsliu.com/feed" />
+	<link rel="pingback" href="http://jmsliu.com/xmlrpc.php" /> -->
+
+<!-- This makes the comment box appear where the ‘reply to this comment’ link is -->
+	 
+		
+<!-- All in One SEO Pack 2.2.7.1 by Michael Torbert of Semper Fi Web Design[587,642] -->
+<meta name="description" content="developers want to save the downloaded file in external storage, for example, sd card. Hence, I decide to start this topic here.">
+
+<meta name="keywords" content="save file,android,internal temp folder,internal storage,external storage,load file,sdcard">
+
+<link rel="canonical" href="./Android Save And Load Downloading File Locally_files/Android Save And Load Downloading File Locally.html">
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Programming Guides and Tips » Android Save And Load Downloading File Locally Comments Feed" href="http://jmsliu.com/1954/android-save-downloading-file-locally.html/feed">
+		<script src="./Android Save And Load Downloading File Locally_files/cb=gapi.loaded_1" async=""></script><script src="./Android Save And Load Downloading File Locally_files/cb=gapi.loaded_0" async=""></script><script id="facebook-jssdk" src="./Android Save And Load Downloading File Locally_files/sdk.js"></script><script id="twitter-wjs" src="./Android Save And Load Downloading File Locally_files/widgets.js"></script><script async="" src="./Android Save And Load Downloading File Locally_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/jmsliu.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.5"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Android Save And Load Downloading File Locally_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="./Android Save And Load Downloading File Locally_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wordpress-popular-posts-css" href="./Android Save And Load Downloading File Locally_files/wpp.css" type="text/css" media="all">
+<link rel="stylesheet" id="shCore-css" href="./Android Save And Load Downloading File Locally_files/shCore.css" type="text/css" media="all">
+<link rel="stylesheet" id="shThemeDefault-css" href="./Android Save And Load Downloading File Locally_files/shThemeDefault.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.4.3 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-53649921-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/jquery.js"></script>
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/jquery-migrate.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://jmsliu.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://jmsliu.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.2.5">
+<link rel="shortlink" href="http://jmsliu.com/?p=1954">
+		<script type="text/javascript">
+            var _statcounter = _statcounter || [];
+            _statcounter.push({"tags": {"author": "admin"}});
+        </script>
+	   				<!-- WordPress Popular Posts v3.2.2 -->
+				<script type="text/javascript">//<![CDATA[
+
+					var sampling_active = 0;
+					var sampling_rate   = 100;
+					var do_request = false;
+
+					if ( !sampling_active ) {
+						do_request = true;
+					} else {
+						var num = Math.floor(Math.random() * sampling_rate) + 1;
+						do_request = ( 1 === num );
+					}
+
+					if ( do_request ) {
+
+						// Create XMLHttpRequest object and set variables
+						var xhr = ( window.XMLHttpRequest )
+						  ? new XMLHttpRequest()
+						  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+						url = 'http://jmsliu.com/wp-admin/admin-ajax.php',
+						params = 'action=update_views_ajax&token=a1c36f8884&id=1954';
+						// Set request method and target URL
+						xhr.open( "POST", url, true );
+						// Set request header
+						xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+						// Hook into onreadystatechange
+						xhr.onreadystatechange = function() {
+							if ( 4 === xhr.readyState && 200 === xhr.status ) {
+								if ( window.console && window.console.log ) {
+									window.console.log( xhr.responseText );
+								}
+							}
+						};
+						// Send request
+						xhr.send( params );
+
+					}
+
+				//]]></script>
+				<!-- End WordPress Popular Posts v3.2.2 -->
+				
+<!-- Modules w/ Javascript -->	
+							
+<!-- Font Replacement -->
+  		<style type="text/css" id="dgCSS">#PPDGFrame { z-index:20002; position:absolute; top:0; left:0; }#PPDGFrame .panel { z-index:20003; position:relative; }#PPDGFrame .panel iframe { width:385px; height:550px; border:0; }#PPDGFrame .mask { z-index:20001; position:absolute; top:0; left:0; background-color:#000; opacity:0.2; filter:alpha(opacity=20); }.nameOnButton { display: inline-block; text-align: center; }.nameOnButton img { border:none; }#PPDGFrame .panel { font:12px Arial,Helvetica,sans-serif;}#PPDGFrame .panel .outer { position:relative; border:0;background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll left top transparent; }#PPDGFrame .panel .page #goBtn { border:1px solid #d5bd98; border-right-color:#935e0d; border-bottom-color:#935e0d; background:#ffa822 url("https://www.paypalobjects.com/en_US/i/pui/core/btn_bg_sprite.gif") left 17.5% repeat-x; cursor:pointer; font:12px Arial,Helvetica,sans-serif; margin-top:10px;}#PPDGFrame .panel .page #goBtn span {margin:5px;}#PPDGFrame .panel .outer .page { background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll right top transparent; margin-left:  15px; padding: 10px 10px 0 0; position:relative; min-height: 290px; left:17px; }#PPDGFrame .panel .outer .page .launcher { padding:0 0 20px 0; width:315px!important; }#PPDGFrame .panel .outer .page .launcher .logoPara { text-align:right;}#PPDGFrame .panel .outer .page .launcher .continueText { padding-right:10px;}#PPDGFrame .panel .minifooter {background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll right bottom transparent; position: absolute;  width:80%; height:12px; right:0px}#PPDGFrame .panel .outer .minifootercap {background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll left bottom transparent; left: -32px; position: absolute; height: 12px; width:80%;}#PPDGFrame .panel #closer{ top:-10px; right:0; position:absolute;}#PPDGFrame .panel #closer a{margin:0; padding:0; list-style:none;  text-decoration:none; position:absolute; height:26px; display:block; width:26px; background:url("https://www.paypal.com/en_US/i/btn/btn_dg_close_sprite.png");cursor:pointer;}#PPDGFrame .panel #closer a:hover{background: url("https://www.paypal.com/en_US/i/btn/btn_dg_close_sprite.png") -26px 0;}</style><script type="text/javascript" charset="utf-8" async="" src="./Android Save And Load Downloading File Locally_files/button.62c90500b68fa929c850cfa2c5dcb03f.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body class="single single-post postid-1954 single-format-standard">
+
+
+
+
+
+<div id="page" class="fix" style="">
+  <div id="wrapper" class="fix">
+    <div id="header" class="fix">
+        <h1 id="blogtitle"><a href="http://jmsliu.com/"><span class="sheen"></span>Programming Guides and Tips</a></h1>
+        <div id="blogdescription">All About HTML 5 Components, IOS iPhone iPad Apps, Android Apps and Components Programming Tutorials</div>
+    </div><!-- /header -->
+
+
+<!-- do my own menu -->
+	
+<div id="nav" class="fix">
+<!--
+	<ul class="fix homebutton">
+		<li class="page_item navfirst">
+		
+			<a class="home" href="/" title="Home">
+				Home	
+			</a>
+		</li>
+	</ul>
+-->
+
+<ul id="menu-main" class="mnav dropdown fix">
+    <li class="menu-item"><a href="http://jmsliu.com/" title="Home">Home</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/category/android">Android</a>
+    </li><li class="menu-item"><a href="http://jmsliu.com/category/iphone-ipad-object-c">IOS</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/category/flash-and-flex-and-air">Flash Flex AIR</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/category/html5-2">HTML 5</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/affiliate-program">Affiliate</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/about-us">About Us</a></li>
+</ul>
+
+<form method="get" class="searchform" action="http://jmsliu.com/">
+	<span class="left"></span>
+		<input type="text" value="Search" name="s" class="s" onfocus="if (this.value == &#39;Search&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search&#39;;}">
+	<span class="right"></span>
+	<input type="submit" class="searchsubmit" value="Go">
+	<div class="clear"></div>
+</form>
+	<div class="clear"></div>
+</div>
+
+<!-- /nav -->
+
+
+
+<!--ads-->
+<!--
+<div style="width: 728px; margin: 0 auto;">
+</div>
+-->
+
+
+
+
+	<div id="container" class="fix ">
+
+<!-- seems don't need, save performance-->
+		<div id="maincontent">
+<div id="content">
+	<!-- head ad area -->
+        <!--
+	<div class="postwrap fix" style="margin-bottom:1.5em; background: url('../images/post-bg.png') repeat-x scroll left bottom #FFFFFF;">
+<div style="width: 600px; margin:0 auto;">
+
+</div>
+	</div>
+	-->
+
+<!--
+<div class="postwrap fix" style="background: #fff; margin: 0 0 20px 0;">
+<div class="copy fix">
+<div class="post-title fix">
+<h2>
+	<a href="http://www.shareasale.com/r.cfm?b=471146&u=962381&m=43811&urllink=&afftrack=">Learn How To Build Android Apps And Start A Business</a>
+</h2>
+I am provide many programming guides and development tips. For beginners, I still recommend Treehouse. 
+
+Treehouse is an online training service that teaches web design, web development and app development with videos, quizzes and interactive coding exercises.
+
+Treehouse's mission is to bring technology education to those who can't get it, and is committed to helping its students find jobs. If you're looking to turn coding into your career, you should consider Treehouse.
+
+14-Day FREE Trial - No Contracts. No Risk. 30-Day Money Back Guarantee.
+</div>
+</div>
+</div>
+-->
+
+		<div class="postwrap fix">
+		
+		<div class="post-1954 post type-post status-publish format-standard hentry category-android tag-android" id="post-1954">
+			<!-- for post header-->
+						<div class="copy fix">
+					
+			    <div class="post-header fix post-nothumb">
+				<div class="post-title-section fix">
+					<div class="post-title fix">
+					<h2><a href="./Android Save And Load Downloading File Locally_files/Android Save And Load Downloading File Locally.html" rel="bookmark" title="Permanent Link to Android Save And Load Downloading File Locally">Android Save And Load Downloading File Locally</a></h2>
+
+					<div class="metabar">
+						<em>
+						On February 17, 2014, 
+						in <a href="http://jmsliu.com/category/android" rel="category tag">Android</a>, 
+						by James Liu												</em>
+					</div>
+					</div>
+				</div>
+				<!--/post-title -->
+
+
+
+			
+				<div class="thumb">
+<style>
+.thumb img
+{
+width:100%;
+height: 100%;
+}
+</style>
+				<a href="./Android Save And Load Downloading File Locally_files/Android Save And Load Downloading File Locally.html" rel="bookmark" title="Permanent Link To Android Save And Load Downloading File Locally">
+									</a>
+				</div>
+
+
+
+							</div>				
+			</div><!-- copy fix end-->
+						<!-- post title and meat end -->
+
+
+
+
+							<div class="copy fix">
+										<div class="textcontent">
+
+
+<!-- ads field -->
+<!--
+<div style="width: 250px; float: right; margin: 0 0 0 18px; border: 1px solid #636363;">
+
+</div>
+-->
+
+
+
+						<p>This is the session 3 of Android Wallpaper App tutorial. In my last android tutorial, I have shown an example to download images from internet. After downloading complete, I save the images into internal app folders, which can only access by this app. In most case, developers want to save the downloaded file in external storage, for example, sd card. Hence, I decide to start this topic here. In this android example, I will cover following topics:</p>
+<ul>
+<li>How to save file in android internal temp folder?</li>
+<li>How to save file in android internal app folder?</li>
+<li>How to save file in external storage like sd-card?</li>
+<li>How to load file from external storage like sd-card?</li>
+</ul>
+<p>This example will base on my last android tutorial app, Android Wallpaper Manager app. In this app, I will download the wallpaper and save it locally. There are two purpose to saving images offline. First is caching the images locally so that it will load fast next time. Second is saving the wallpapers which users like so that they can use them as wallpaper later. </p>
+<p>This Android Wallpaper App example includes four tutorials:</p>
+<ul>
+<li>Android Wallpaper App Example 1: <a href="http://jmsliu.com/1879/android-gridview-example-in-real-wallpaper-app.html">Android GridView Example in Real App</a></li>
+<li>Android Wallpaper App Example 2: <a href="http://jmsliu.com/1902/android-download-image-with-progress-dialog-example.html">Download Image with Progress Dialog</a></li>
+<li>Android Wallpaper App Example 3: Save And Load Downloading File Locally</li>
+<li>Android Wallpaper App Example 4: <a href="http://jmsliu.com/2035/android-save-images-and-set-wallpaper.html">Load Images And Set Wallpaper</a></li>
+<li>Android Wallpaper App Example 5: <a href="http://jmsliu.com/2455/android-crop-image-and-assign-wallpaper.html" title="Crop Image in Android">Crop Image in Android</a></li>
+</ul>
+<p><span id="more-1954"></span></p>
+<h3>Get Cache Folder in Android</h3>
+<p>In this tutorial, I will cover both usage, saving image as cache and saving image as app data in sd-card. Let’s check following example source code first.</p>
+<div id="highlighter_983714" class="syntaxhighlighter  "><div class="bar"><div class="toolbar"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_983714_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_983714" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="keyword">public</code> <code class="plain">File getCacheFolder(Context context) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">File cacheDir = </code><code class="keyword">null</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">cacheDir = </code><code class="keyword">new</code> <code class="plain">File(Environment.getExternalStorageDirectory(), </code><code class="string">"cachefolder"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(!cacheDir.isDirectory()) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">cacheDir.mkdirs();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(!cacheDir.isDirectory()) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">cacheDir = context.getCacheDir(); </code><code class="comments">//get system cache folder</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">cacheDir;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div></div></div>
+<p>The above example code is doing 3 things. First, it will check if your android device equips external storage such as sd-card. If it does, it will search your cache folder in sd-card path and get a file object which points to the cache folder “cachefolder” in sc-card folder. If the cache folder doesn’t exist, it will create a new folder named “cachefolder” in your sdcard. If all above jobs failed, it will get android internal cache folder. Please keep in mind, files in android internal cache folder will be deleted when the device runs low on storage. There is no guarantee when these files will be deleted. For cache usage, you’d better to look the size of your cache folder regularly and always keep your cache folder in a reasonable maximum size such as 1MB internally or 10MB externally.</p>
+<h3>Get App Data Folder in Android</h3>
+<p>The following code will show you how to get and create a app data folder in your sdcard or in android internal app data folder if sdcard is not available.</p>
+<div id="highlighter_186607" class="syntaxhighlighter  "><div class="bar"><div class="toolbar"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_186607_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_186607" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="keyword">public</code> <code class="plain">File getDataFolder(Context context) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">File dataDir = </code><code class="keyword">null</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">dataDir = </code><code class="keyword">new</code> <code class="plain">File(Environment.getExternalStorageDirectory(), </code><code class="string">"myappdata"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(!dataDir.isDirectory()) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">dataDir.mkdirs();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(!dataDir.isDirectory()) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">dataDir = context.getFilesDir();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">dataDir;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div></div></div>
+<p>The above code will give your a data folder in your sdcard if sdcard is available in your android device. Otherwise, it will return the path of directory holding application files. Your app’s internal storage directory is specified by your app’s package name in a special location of the Android file system. </p>
+<h3>Write File into Android Cache Folder</h3>
+<p>Now, let’s talk about how to use the above functions. First of all, I will show you how to save a file in Android cache folder. Please look the following code:</p>
+<div id="highlighter_663803" class="syntaxhighlighter  "><div class="bar"><div class="toolbar"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_663803_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_663803" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">URL wallpaperURL = </code><code class="keyword">new</code> <code class="plain">URL(wallpaperURLStr);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="plain">URLConnection connection = wallpaperURL.openConnection();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="plain">InputStream inputStream = </code><code class="keyword">new</code> <code class="plain">BufferedInputStream(wallpaperURL.openStream(), </code><code class="value">10240</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="plain">File cacheDir = getCacheFolder(MainActivity.</code><code class="keyword">this</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="plain">File cacheFile = </code><code class="keyword">new</code> <code class="plain">File(cacheDir, </code><code class="string">"localFileName.jpg"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="plain">FileOutputStream outputStream = </code><code class="keyword">new</code> <code class="plain">FileOutputStream(cacheFile);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="keyword">byte</code> <code class="plain">buffer[] = </code><code class="keyword">new</code> <code class="keyword">byte</code><code class="plain">[</code><code class="value">1024</code><code class="plain">];</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="keyword">int</code> <code class="plain">dataSize;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="keyword">int</code> <code class="plain">loadedSize = </code><code class="value">0</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">while</code> <code class="plain">((dataSize = inputStream.read(buffer)) != -</code><code class="value">1</code><code class="plain">) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">loadedSize += dataSize;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">publishProgress(loadedSize);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">outputStream.write(buffer, </code><code class="value">0</code><code class="plain">, dataSize);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">outputStream.close();</code></td></tr></tbody></table></div></div></div>
+<p>Above code is an example code from my Android Wallpaper app. It downloads a image from internet and save it in android cache folder. If you want to save the image as Android App data, please replace function getCacheFolder with getDataFolder.</p>
+<h3>Load File from Android Cache Folder</h3>
+<p>Now you know how to save the file in android locally. I will show you how to load file from android internal storage or from android sdcard. Still, I will use my app example code. The following code will load a image from Android sdcard and show it in an Imageview.</p>
+<div id="highlighter_146124" class="syntaxhighlighter  "><div class="bar "><div class="toolbar"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_146124_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_146124" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">File cacheDir = GlobalClass.instance().getCacheFolder(</code><code class="keyword">this</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="plain">File cacheFile = </code><code class="keyword">new</code> <code class="plain">File(cacheDir, wallpaperFilePath);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="plain">InputStream fileInputStream = </code><code class="keyword">new</code> <code class="plain">FileInputStream(cacheFile);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="plain">BitmapFactory.Options bitmapOptions = </code><code class="keyword">new</code> <code class="plain">BitmapFactory.Options();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="plain">bitmapOptions.inSampleSize = scale;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="plain">bitmapOptions.inJustDecodeBounds = </code><code class="keyword">false</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>7</code></td><td class="content"><code class="plain">Bitmap wallpaperBitmap = BitmapFactory.decodeStream(fileInputStream, </code><code class="keyword">null</code><code class="plain">, bitmapOptions);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>8</code></td><td class="content"><code class="plain">ImageView imageView = (ImageView)</code><code class="keyword">this</code><code class="plain">.findViewById(R.id.preview);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>9</code></td><td class="content"><code class="plain">imageView.setImageBitmap(wallpaperBitmap);</code></td></tr></tbody></table></div></div></div>
+<h3>Try Example Android App</h3>
+<p>You can download and install this android app by click the following link, or scan the following QR code to download and install on your android phone simply. If you feel it is helpful, please support me by clicking the banner inside the app.<br>
+<a href="http://jmsliu.com/example/androidwallpaperapp/WallpaperGridViewExample1.2.apk">Download and Run This Example on Your Android Phone</a></p>
+<p><img src="./Android Save And Load Downloading File Locally_files/chart2.png" alt="chart" width="100" height="100"></p>
+<h3>Get Full Source Code at <span style="color: #ff0000;">$4.99</span></h3>
+<form action="http://jmsliu.com/digitalgoods/checkout.php" method="POST" target="PPDGFrame"><input type="image" name="paypal_submit" id="paypal_submit" src="./Android Save And Load Downloading File Locally_files/btn_dg_pay_w_paypal.gif" border="0" align="top" alt="Pay with PayPal"><input type="hidden" name="trackID" value="53018b8829afe"></form>
+<p><script src="./Android Save And Load Downloading File Locally_files/dg.js" type="text/javascript"></script><script>	var dg = new PAYPAL.apps.DGFlow(	{		trigger: 'paypal_submit',		expType: 'instant'	});</script><br>
+You will get whole source code at $4.99 in version 1.2. It is fully functional, and embedded the Google AdMob module by default. With this source code, you can do everything you want:</p>
+<ul>
+<li>Load your own images;</li>
+<li>Monetize the app with your own AdMob publish id;</li>
+<li>Use the source code in your own project;</li>
+<li>Publish this app with your Google Play account;</li>
+</ul>
+	
+							
+							
+					</div>	
+				</div>
+	
+								
+			<div class="hl"></div>
+	<div class="post-footer">
+					<div class="left">
+							</div>
+
+
+<!-- twitter -->
+<div style="float:left; padding: 10px 0 0 0;  margin: 0 0 0 12px;">
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./Android Save And Load Downloading File Locally_files/tweet_button.e00c464da75b252cb1a028400793cadc.en.html" style="position: static; visibility: visible; width: 78px; height: 20px;" data-url="http://jmsliu.com/1954/android-save-downloading-file-locally.html"></iframe>
+</div>
+
+<!-- facebook -->
+<div style="float:left; margin: 10px 0 0 5px;">
+    <div class="fb-like fb_iframe_widget" data-href="http://jmsliu.com/1954/android-save-downloading-file-locally.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=0&amp;href=http%3A%2F%2Fjmsliu.com%2F1954%2Fandroid-save-downloading-file-locally.html&amp;layout=button_count&amp;locale=en_GB&amp;sdk=joey&amp;share=false&amp;show_faces=false"><span style="vertical-align: bottom; width: 76px; height: 20px;"><iframe name="f29734468" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Android Save And Load Downloading File Locally_files/like.html" style="border: none; visibility: visible; width: 76px; height: 20px;" class=""></iframe></span></div>
+</div>
+
+<!-- Place this tag where you want the +1 button to render. -->
+<div style="float:left; margin: 8px 0 0 20px;">
+    <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 106px; height: 24px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 106px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1447646167886" name="I0_1447646167886" src="./Android Save And Load Downloading File Locally_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+</div>
+
+
+
+			<div class="right">
+				<a href="http://twitter.com/home/?status=Android%20Save%20And%20Load%20Downloading%20File%20Locally%20http://jmsliu.com/1954/android-save-downloading-file-locally.html" title="Post At Twitter" rel="nofollow" target="_blank"><img src="./Android Save And Load Downloading File Locally_files/ico-soc5.gif" alt="Digg"></a> 
+
+				<a href="http://del.icio.us/post?url=http://jmsliu.com/1954/android-save-downloading-file-locally.html&title=Android%20Save%20And%20Load%20Downloading%20File%20Locally" title="Bookmark at Delicious" rel="nofollow" target="_blank"><img src="./Android Save And Load Downloading File Locally_files/ico-soc1.gif" alt="Delicious"></a>				
+				
+				<a href="http://digg.com/submit?phase=2&url=http://jmsliu.com/1954/android-save-downloading-file-locally.html&title=Android%20Save%20And%20Load%20Downloading%20File%20Locally" title="Bookmark at Digg" rel="nofollow" target="_blank"><img src="./Android Save And Load Downloading File Locally_files/ico-soc4.gif" alt="Digg"></a> 
+				
+			</div>
+				<br class="fix">
+		
+	</div>		</div><!--post -->
+
+	</div>
+	
+			<div class="tags">
+			Tagged with: <a href="http://jmsliu.com/tag/android" rel="tag">Android</a>&nbsp;
+		</div>
+	
+			<div class="post-nav"> <span class="previous"><a href="http://jmsliu.com/1929/android-progress-dialog-example.html" rel="prev">Android Progress Dialog Example</a></span> <span class="next"><a href="http://jmsliu.com/1969/admob-account-and-google-play-account.html" rel="next">Admob Account and Google Play Account</a></span></div>
+		
+	<div class="clear"></div>
+	
+				
+						<div class="postwrap commentswrap ">	
+<div class="hentry">		
+	<div class="copy"> 
+<!-- You can start editing here. -->
+
+	<h3 id="comments">4 Responses to “Android Save And Load Downloading File Locally”</h3>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1 parent" id="comment-471891">
+				<div id="div-comment-471891" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Android Save And Load Downloading File Locally_files/95a0312c7f6ea1dde236ca27321a642c" srcset="http://0.gravatar.com/avatar/95a0312c7f6ea1dde236ca27321a642c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">gokul</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#comment-471891">
+			December 21, 2014 at 2:37 pm</a>		</div>
+
+		<p>how can i apply to custom list view?each image ll have differnet url.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1954/android-save-downloading-file-locally.html?replytocom=471891#respond" onclick="return addComment.moveForm( &quot;div-comment-471891&quot;, &quot;471891&quot;, &quot;respond&quot;, &quot;1954&quot; )" aria-label="Reply to gokul">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2" id="comment-478220">
+				<div id="div-comment-478220" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Android Save And Load Downloading File Locally_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#comment-478220">
+			December 26, 2014 at 11:48 am</a>		</div>
+
+		<p>Please check this post: <a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html" rel="nofollow">Download Images by AsyncTask in ListView Android Example</a></p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1954/android-save-downloading-file-locally.html?replytocom=478220#respond" onclick="return addComment.moveForm( &quot;div-comment-478220&quot;, &quot;478220&quot;, &quot;respond&quot;, &quot;1954&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-597618">
+				<div id="div-comment-597618" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Android Save And Load Downloading File Locally_files/2efcafa121380e9ab6d3e17a1804f525" srcset="http://2.gravatar.com/avatar/2efcafa121380e9ab6d3e17a1804f525?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Tom</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#comment-597618">
+			September 23, 2015 at 1:48 pm</a>		</div>
+
+		<p>Hello – Can you explain, why you use in the following code line the value 10240 ?</p>
+<p>InputStream inputStream = new BufferedInputStream(wallpaperURL.openStream(), 10240);</p>
+<p>Size size of the buffer array is 1024.</p>
+<p>BR</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1954/android-save-downloading-file-locally.html?replytocom=597618#respond" onclick="return addComment.moveForm( &quot;div-comment-597618&quot;, &quot;597618&quot;, &quot;respond&quot;, &quot;1954&quot; )" aria-label="Reply to Tom">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2" id="comment-597859">
+				<div id="div-comment-597859" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Android Save And Load Downloading File Locally_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#comment-597859">
+			September 24, 2015 at 11:01 am</a>		</div>
+
+		<p>10240 is the downloading cache for downloading the image, it is 10k. Of course, you can set it as 1024 (1k).</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1954/android-save-downloading-file-locally.html?replytocom=597859#respond" onclick="return addComment.moveForm( &quot;div-comment-597859&quot;, &quot;597859&quot;, &quot;respond&quot;, &quot;1954&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://jmsliu.com/1954/android-save-downloading-file-locally.html#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div>
+
+	
+		<form action="http://jmsliu.com/wp-comments-post.php" method="post" id="commentform">
+
+		
+		<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true">
+		<label for="author"><small>Name (required)</small></label></p>
+
+		<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required="true">
+		<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+		<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+		<label for="url"><small>Website</small></label></p>
+
+		
+		
+		<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+		<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment">
+		<input type="hidden" name="comment_post_ID" value="1954" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+		</p>
+		<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="6c6b19eabd"></p><a id="clinkft1" href="http://zhuti.weboy.org/" title="WordPress主题"></a><script type="text/javascript">clinkft1.innerHTML = "";</script><p style="display: none;"></p>
+			<input type="hidden" id="ak_js" name="ak_js" value="1447646167808"></form>
+
+</div> <!-- End Respond -->
+</div>
+</div>
+</div>			
+			
+	
+		
+	
+</div> <!-- end content -->
+</div>
+<div id="sidebar" class="fix">
+
+
+
+
+<!-- google plus -->
+<!-- Place this tag where you want the widget to render. -->
+<div style="margin-bottom: 10px;">
+<div id="___person_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 106px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 106px;" tabindex="0" vspace="0" width="100%" id="I1_1447646167892" name="I1_1447646167892" src="./Android Save And Load Downloading File Locally_files/person.html" data-gapiattached="true" title="+Badge"></iframe></div>
+</div>
+
+
+
+
+
+<!-- Ads 300x600 -->
+<!--
+<div style="margin-bottom: 20px; width: 278px; height: 415px; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #aaa; border-bottom: 1px solid #aaa; -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; overflow: hidden; background: #fff; padding: 10px 10px 0 10px;">
+<script id="mNCC" language="javascript">  medianet_width='300';  medianet_height= '600';  medianet_crid='296748494';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU24YGF7" language="javascript"></script> 
+</div>
+-->
+
+
+<!-- inner site ads -->
+<!--
+<div style="overflow:hidden;  border-radius: 5px; margin: 0 0 20px 0;">
+<a href="http://jmsliu.com/2812/hd-beauty-gallery-android-app.html">
+<img alt="hd beauty gallery featured image" src="http://jmsliu.com/wp-content/uploads/2015/03/website-featured-image-mini.png"/>
+</a>
+</div>
+-->
+
+
+
+				
+				
+
+	
+				
+					<div id="text-2" class="widget_text widget"><div class="winner">			<div class="textwidget"><h3 class="wtitle"><a href="http://jmsliu.com/products/jmsdgps/" title="JMS Digital Goods Ecommerce Platform" target="_blank">JMS Digital Goods Ecommerce Platform</a></h3>
+<div>
+PHP based payment and management system. It provides a easy way for you to manage and sell your digital goods and products on your website.
+</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/online-bootstrap-donation/" title="Online Bootstrap Donation Widget" target="_blank">Online Bootstrap Donation Widget</a></h3>
+<div>
+Bootstrap based online donation widget. It will help you collect donations easily on your own website.</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/sprite-sheet-decomposer/" title="Free Online Sprite Sheet Decomposer" target="_blank">Free Online Sprite Sheet Decomposer</a></h3>
+<div>
+Decompose and create animations from a sprite sheet easily. It will help you cut sprite sheet animation pictures into separate frame pictures.
+</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/google-translate-mp3-downloader/" title="Google Translate Voice MP3 Downloader" target="_blank">Google Translate Voice MP3 Downloader</a></h3>
+<div>
+Download word voice-over in one click. It will help you to get the word pronunciation mp3 file from Google Translate service.
+</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/jms-rss-feed/" title="JMS Rss Feed" target="_blank">JMS Rss Feed Featured Image Plugin</a></h3>
+<div>
+Adds the featured image url in a tag into to your posts to the RSS feed.
+</div></div>
+		&nbsp;</div></div><div id="linkcat-40" class="widget_links widget"><div class="winner"><h3 class="wtitle">Featured Tutorials&nbsp;</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://jmsliu.com/209/add-google-admob-in-android-application.html">Admob in Android Application (Integrated with Google Play Service)</a></li>
+<li><a href="http://jmsliu.com/1390/rss-reader-app-android-tutorial-1-listview-and-arrayadapter.html">Android Rss Reader App Tutorial (1-5)</a></li>
+<li><a href="http://jmsliu.com/1879/android-gridview-example-in-real-wallpaper-app.html">Android Wallpaper App Tutorial (1-5)</a></li>
+<li><a href="http://jmsliu.com/1088/iphone-rss-reader-app-ios-tutorial-1-storyboard-ui-programming.html">iPhone Rss Reader App IOS Tutorial (1-4)</a></li>
+
+	</ul>
+&nbsp;</div></div>
+
+<!-- WordPress Popular Posts Plugin v3.2.2 [W] [monthly] [avg] [regular] -->
+<div id="wpp-3" class="popular-posts widget"><div class="winner">
+<h3 class="wtitle">Popular Posts&nbsp;</h3>
+<ul class="wpp-list">
+<li><a href="http://jmsliu.com/2444/click-button-in-listview-and-get-item-position.html" title="Click Button in ListView And Get Item Position" class="wpp-post-title" target="_self">Click Button in ListView And Get Item Position</a>  <span class="post-stats"><span class="wpp-views">85.61 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/2892/tablets-with-usb-port-review-2015.html" title="Tablets with USB Port Review 2015" class="wpp-post-title" target="_self">Tablets with USB Port Review 2015</a>  <span class="post-stats"><span class="wpp-views">73.77 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html" title="Download Images by AsyncTask in ListView Android Example" class="wpp-post-title" target="_self">Download Images by AsyncTask in ListView Android Example</a>  <span class="post-stats"><span class="wpp-views">63.26 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/1390/rss-reader-app-android-tutorial-1-listview-and-arrayadapter.html" title="Rss Reader App Android Tutorial 1: ListView and ArrayAdapter" class="wpp-post-title" target="_self">Rss Reader App Android Tutorial 1: ListView and ArrayAdapter</a>  <span class="post-stats"><span class="wpp-views">51.58 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/2499/play-mp3-in-android-tutorial-android-mediaplayer-example.html" title="Play MP3 in Android Tutorial: Android Mediaplayer Example" class="wpp-post-title" target="_self">Play MP3 in Android Tutorial: Android Mediaplayer Example</a>  <span class="post-stats"><span class="wpp-views">51.55 views per day</span></span> </li>
+
+</ul>
+&nbsp;</div></div>
+<!-- End WordPress Popular Posts Plugin v3.2.2 -->
+<div id="categories-3" class="widget_categories widget"><div class="winner"><h3 class="wtitle">Categories&nbsp;</h3>		<ul>
+	<li class="cat-item cat-item-8"><a href="http://jmsliu.com/category/android">Android</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://jmsliu.com/category/android/android-tablet">Android Phone and Tablet</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://jmsliu.com/category/flash-and-flex-and-air" title="Articles about flash and flex">Flash Flex AIR</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://jmsliu.com/category/html5-2">HTML5</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://jmsliu.com/category/iphone-ipad-object-c">iPhone iPad Object-C</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://jmsliu.com/category/make-money-online">Make Money Online</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://jmsliu.com/category/others" title="All miscellaneous articles">Other Online Technology</a>
+</li>
+		</ul>
+&nbsp;</div></div>				
+										
+
+</div><!--/sidebar --></div>
+<div class="clear"></div>
+
+
+
+<div id="footer">
+	<div class="effect">
+		<div class="content">
+<span class="terms" style="padding: 0 20px;">
+ 2015  © All Rights Reserved by <a href="http://jmsliu.com/">Programming Guides and Tips</a>
+</span>
+<span><a href="http://jmsliu.com/privacy-policy">Privacy Policy</a></span>
+					
+			<div class="clear"></div>
+		</div>		
+	</div>
+
+
+</div>
+	<div class="clear"></div>
+
+ 	<hr class="hidden">
+
+  </div><!--/wrapper -->
+
+</div><!--/page -->
+
+<!-- Footer Scripts Go Here -->
+<!-- End Footer scripts -->
+
+    <!-- Start of StatCounter Code -->
+    <script>
+    <!-- 
+        var sc_project=10591210; 
+        var sc_security="6902d2db"; 
+      var sc_invisible=1;
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    //-->
+document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js'></"+"script>");
+</script><script src="./Android Save And Load Downloading File Locally_files/counter.js"></script>
+<noscript>&lt;div class="statcounter"&gt;&lt;a title="web analytics" href="http://statcounter.com/"&gt;&lt;img class="statcounter" src="http://c.statcounter.com/10591210/0/6902d2db/1/" alt="web analytics" /&gt;&lt;/a&gt;&lt;/div&gt;</noscript>   
+    <!-- End of StatCounter Code -->
+<a id="clinkft2" href="http://themes.weboy.org/" title="Free WordPress Theme"></a><script type="text/javascript">clinkft2.innerHTML = "";</script><script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/shCore.js"></script>
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/shBrushJava.js"></script>
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/form.js"></script>
+<script type="text/javascript">//<![CDATA[
+SyntaxHighlighter.config.strings.expandSource="+ expand source";SyntaxHighlighter.config.strings.viewSource="view plain";SyntaxHighlighter.config.strings.copyToClipboard="copy to clipboard";SyntaxHighlighter.config.strings.copyToClipboardConfirmation="The code is in your clipboard now";SyntaxHighlighter.config.strings.print="print";SyntaxHighlighter.config.strings.help="?";SyntaxHighlighter.config.strings.noBrush="Can't find brush for: ";SyntaxHighlighter.config.strings.brushNotHtmlScript="Brush wasn't made for html-script option: ";SyntaxHighlighter.config.clipboardSwf="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf";
+SyntaxHighlighter.all();
+//]]></script>
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/jquery.form.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/jmsliu.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Android Save And Load Downloading File Locally_files/scripts.js"></script>
+
+
+<!-- Twitter -->
+<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script src="./Android Save And Load Downloading File Locally_files/platform.js" async="" defer="" gapi_processed="true"></script>
+
+
+
+<!--facebook-->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_http" src="./Android Save And Load Downloading File Locally_files/wjDNIDNrTQG.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_https" src="./Android Save And Load Downloading File Locally_files/wjDNIDNrTQG(1).html" style="border: none;"></iframe></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<iframe name="oauth2relay358639897" id="oauth2relay358639897" src="./Android Save And Load Downloading File Locally_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

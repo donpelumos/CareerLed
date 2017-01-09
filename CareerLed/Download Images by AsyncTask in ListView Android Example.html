@@ -1,0 +1,1247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0084)http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	
+
+<!-- Meta Images -->
+	<link rel="shortcut icon" href="http://jmsliu.com/favicon.ico" type="image/x-icon">	
+<!-- Title and External Script Integration -->
+	<title>Download Images by AsyncTask in ListView Android Example</title>
+	
+<!-- Stylesheets -->
+	<link rel="stylesheet" href="./Download Images by AsyncTask in ListView Android Example_files/reset.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Download Images by AsyncTask in ListView Android Example_files/wp_core.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Download Images by AsyncTask in ListView Android Example_files/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Download Images by AsyncTask in ListView Android Example_files/pro.css" type="text/css" media="screen">				
+
+<!-- Wordpress Stuff -->
+	<!-- <link rel="alternate" type="application/rss+xml" title="Programming Guides and Tips RSS Feed" href="http://jmsliu.com/feed" />
+	<link rel="pingback" href="http://jmsliu.com/xmlrpc.php" /> -->
+
+<!-- This makes the comment box appear where the ‘reply to this comment’ link is -->
+	 
+		
+<!-- All in One SEO Pack 2.2.7.1 by Michael Torbert of Semper Fi Web Design[587,652] -->
+<meta name="description" content="In this Android tutorial, I will give an example to show how to use Asynctask to download a list of images">
+
+<meta name="keywords" content="listview,download,image,download image,asynctask">
+
+<link rel="canonical" href="./Download Images by AsyncTask in ListView Android Example_files/Download Images by AsyncTask in ListView Android Example.html">
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Programming Guides and Tips » Download Images by AsyncTask in ListView Android Example Comments Feed" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html/feed">
+		<script src="./Download Images by AsyncTask in ListView Android Example_files/cb=gapi.loaded_1" async=""></script><script src="./Download Images by AsyncTask in ListView Android Example_files/cb=gapi.loaded_0" async=""></script><script id="facebook-jssdk" src="./Download Images by AsyncTask in ListView Android Example_files/sdk.js"></script><script id="twitter-wjs" src="./Download Images by AsyncTask in ListView Android Example_files/widgets.js"></script><script async="" src="./Download Images by AsyncTask in ListView Android Example_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/jmsliu.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.5"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Download Images by AsyncTask in ListView Android Example_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="contact-form-7-css" href="./Download Images by AsyncTask in ListView Android Example_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wordpress-popular-posts-css" href="./Download Images by AsyncTask in ListView Android Example_files/wpp.css" type="text/css" media="all">
+<link rel="stylesheet" id="shCore-css" href="./Download Images by AsyncTask in ListView Android Example_files/shCore.css" type="text/css" media="all">
+<link rel="stylesheet" id="shThemeDefault-css" href="./Download Images by AsyncTask in ListView Android Example_files/shThemeDefault.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.4.3 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-53649921-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/jquery.js"></script>
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/jquery-migrate.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://jmsliu.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://jmsliu.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.2.5">
+<link rel="shortlink" href="http://jmsliu.com/?p=1431">
+		<script type="text/javascript">
+            var _statcounter = _statcounter || [];
+            _statcounter.push({"tags": {"author": "admin"}});
+        </script>
+	   				<!-- WordPress Popular Posts v3.2.2 -->
+				<script type="text/javascript">//<![CDATA[
+
+					var sampling_active = 0;
+					var sampling_rate   = 100;
+					var do_request = false;
+
+					if ( !sampling_active ) {
+						do_request = true;
+					} else {
+						var num = Math.floor(Math.random() * sampling_rate) + 1;
+						do_request = ( 1 === num );
+					}
+
+					if ( do_request ) {
+
+						// Create XMLHttpRequest object and set variables
+						var xhr = ( window.XMLHttpRequest )
+						  ? new XMLHttpRequest()
+						  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+						url = 'http://jmsliu.com/wp-admin/admin-ajax.php',
+						params = 'action=update_views_ajax&token=a1c36f8884&id=1431';
+						// Set request method and target URL
+						xhr.open( "POST", url, true );
+						// Set request header
+						xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+						// Hook into onreadystatechange
+						xhr.onreadystatechange = function() {
+							if ( 4 === xhr.readyState && 200 === xhr.status ) {
+								if ( window.console && window.console.log ) {
+									window.console.log( xhr.responseText );
+								}
+							}
+						};
+						// Send request
+						xhr.send( params );
+
+					}
+
+				//]]></script>
+				<!-- End WordPress Popular Posts v3.2.2 -->
+				
+<!-- Modules w/ Javascript -->	
+							
+<!-- Font Replacement -->
+  		<style type="text/css" id="dgCSS">#PPDGFrame { z-index:20002; position:absolute; top:0; left:0; }#PPDGFrame .panel { z-index:20003; position:relative; }#PPDGFrame .panel iframe { width:385px; height:550px; border:0; }#PPDGFrame .mask { z-index:20001; position:absolute; top:0; left:0; background-color:#000; opacity:0.2; filter:alpha(opacity=20); }.nameOnButton { display: inline-block; text-align: center; }.nameOnButton img { border:none; }#PPDGFrame .panel { font:12px Arial,Helvetica,sans-serif;}#PPDGFrame .panel .outer { position:relative; border:0;background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll left top transparent; }#PPDGFrame .panel .page #goBtn { border:1px solid #d5bd98; border-right-color:#935e0d; border-bottom-color:#935e0d; background:#ffa822 url("https://www.paypalobjects.com/en_US/i/pui/core/btn_bg_sprite.gif") left 17.5% repeat-x; cursor:pointer; font:12px Arial,Helvetica,sans-serif; margin-top:10px;}#PPDGFrame .panel .page #goBtn span {margin:5px;}#PPDGFrame .panel .outer .page { background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll right top transparent; margin-left:  15px; padding: 10px 10px 0 0; position:relative; min-height: 290px; left:17px; }#PPDGFrame .panel .outer .page .launcher { padding:0 0 20px 0; width:315px!important; }#PPDGFrame .panel .outer .page .launcher .logoPara { text-align:right;}#PPDGFrame .panel .outer .page .launcher .continueText { padding-right:10px;}#PPDGFrame .panel .minifooter {background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll right bottom transparent; position: absolute;  width:80%; height:12px; right:0px}#PPDGFrame .panel .outer .minifootercap {background: url("https://www.paypalobjects.com/en_US/i/scr/scr_dg_sliding_door_bdr_wf.png") no-repeat scroll left bottom transparent; left: -32px; position: absolute; height: 12px; width:80%;}#PPDGFrame .panel #closer{ top:-10px; right:0; position:absolute;}#PPDGFrame .panel #closer a{margin:0; padding:0; list-style:none;  text-decoration:none; position:absolute; height:26px; display:block; width:26px; background:url("https://www.paypal.com/en_US/i/btn/btn_dg_close_sprite.png");cursor:pointer;}#PPDGFrame .panel #closer a:hover{background: url("https://www.paypal.com/en_US/i/btn/btn_dg_close_sprite.png") -26px 0;}</style><script type="text/javascript" charset="utf-8" async="" src="./Download Images by AsyncTask in ListView Android Example_files/button.62c90500b68fa929c850cfa2c5dcb03f.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body class="single single-post postid-1431 single-format-standard">
+
+
+
+
+
+<div id="page" class="fix" style="">
+  <div id="wrapper" class="fix">
+    <div id="header" class="fix">
+        <h1 id="blogtitle"><a href="http://jmsliu.com/"><span class="sheen"></span>Programming Guides and Tips</a></h1>
+        <div id="blogdescription">All About HTML 5 Components, IOS iPhone iPad Apps, Android Apps and Components Programming Tutorials</div>
+    </div><!-- /header -->
+
+
+<!-- do my own menu -->
+	
+<div id="nav" class="fix">
+<!--
+	<ul class="fix homebutton">
+		<li class="page_item navfirst">
+		
+			<a class="home" href="/" title="Home">
+				Home	
+			</a>
+		</li>
+	</ul>
+-->
+
+<ul id="menu-main" class="mnav dropdown fix">
+    <li class="menu-item"><a href="http://jmsliu.com/" title="Home">Home</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/category/android">Android</a>
+    </li><li class="menu-item"><a href="http://jmsliu.com/category/iphone-ipad-object-c">IOS</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/category/flash-and-flex-and-air">Flash Flex AIR</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/category/html5-2">HTML 5</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/affiliate-program">Affiliate</a></li>
+    <li class="menu-item"><a href="http://jmsliu.com/about-us">About Us</a></li>
+</ul>
+
+<form method="get" class="searchform" action="http://jmsliu.com/">
+	<span class="left"></span>
+		<input type="text" value="Search" name="s" class="s" onfocus="if (this.value == &#39;Search&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search&#39;;}">
+	<span class="right"></span>
+	<input type="submit" class="searchsubmit" value="Go">
+	<div class="clear"></div>
+</form>
+	<div class="clear"></div>
+</div>
+
+<!-- /nav -->
+
+
+
+<!--ads-->
+<!--
+<div style="width: 728px; margin: 0 auto;">
+</div>
+-->
+
+
+
+
+	<div id="container" class="fix ">
+
+<!-- seems don't need, save performance-->
+		<div id="maincontent">
+<div id="content">
+	<!-- head ad area -->
+        <!--
+	<div class="postwrap fix" style="margin-bottom:1.5em; background: url('../images/post-bg.png') repeat-x scroll left bottom #FFFFFF;">
+<div style="width: 600px; margin:0 auto;">
+
+</div>
+	</div>
+	-->
+
+<!--
+<div class="postwrap fix" style="background: #fff; margin: 0 0 20px 0;">
+<div class="copy fix">
+<div class="post-title fix">
+<h2>
+	<a href="http://www.shareasale.com/r.cfm?b=471146&u=962381&m=43811&urllink=&afftrack=">Learn How To Build Android Apps And Start A Business</a>
+</h2>
+I am provide many programming guides and development tips. For beginners, I still recommend Treehouse. 
+
+Treehouse is an online training service that teaches web design, web development and app development with videos, quizzes and interactive coding exercises.
+
+Treehouse's mission is to bring technology education to those who can't get it, and is committed to helping its students find jobs. If you're looking to turn coding into your career, you should consider Treehouse.
+
+14-Day FREE Trial - No Contracts. No Risk. 30-Day Money Back Guarantee.
+</div>
+</div>
+</div>
+-->
+
+		<div class="postwrap fix">
+		
+		<div class="post-1431 post type-post status-publish format-standard hentry category-android tag-android" id="post-1431">
+			<!-- for post header-->
+						<div class="copy fix">
+					
+			    <div class="post-header fix post-nothumb">
+				<div class="post-title-section fix">
+					<div class="post-title fix">
+					<h2><a href="./Download Images by AsyncTask in ListView Android Example_files/Download Images by AsyncTask in ListView Android Example.html" rel="bookmark" title="Permanent Link to Download Images by AsyncTask in ListView Android Example">Download Images by AsyncTask in ListView Android Example</a></h2>
+
+					<div class="metabar">
+						<em>
+						On June 15, 2013, 
+						in <a href="http://jmsliu.com/category/android" rel="category tag">Android</a>, 
+						by James Liu												</em>
+					</div>
+					</div>
+				</div>
+				<!--/post-title -->
+
+
+
+			
+				<div class="thumb">
+<style>
+.thumb img
+{
+width:100%;
+height: 100%;
+}
+</style>
+				<a href="./Download Images by AsyncTask in ListView Android Example_files/Download Images by AsyncTask in ListView Android Example.html" rel="bookmark" title="Permanent Link To Download Images by AsyncTask in ListView Android Example">
+									</a>
+				</div>
+
+
+
+							</div>				
+			</div><!-- copy fix end-->
+						<!-- post title and meat end -->
+
+
+
+
+							<div class="copy fix">
+										<div class="textcontent">
+
+
+<!-- ads field -->
+<!--
+<div style="width: 250px; float: right; margin: 0 0 0 18px; border: 1px solid #636363;">
+
+</div>
+-->
+
+
+
+						<p>Loading images is the most common task for Android apps. Loading image task can be very simple. But if the image size is very big or there are lots of images to be downloaded, it will take a long time. During the downloading progress, all android UI will freeze. Therefore, we have to download images in different thread from main thread (UI thread). In this Android tutorial, I will give an example to show how to use Asynctask to download a list of images. </p>
+<p><a href="http://jmsliu.com/example/androidimagewithasynctask/LoadImageWithAsynctask.apk" title="Download Images in AsyncTask in ListView">Download and Try Download Images In AsyncTask Android Example</a><br>
+<img src="./Download Images by AsyncTask in ListView Android Example_files/chart.png" alt="chart" width="100" height="100"></p>
+<p><span id="more-1431"></span><br>
+At the beginning, I will create a ListView. In each row of the list, there are one image from internet. Therefore, we need to download the image in each row view for the list in the ArrayAdapter. For more information about ListView and ArrayAdapter, please check post:<a href="http://jmsliu.com/1390/rss-reader-app-android-tutorial-1-listview-and-arrayadapter.html" title="Android Tutorial: ListView and ArrayAdapter">ListView and ArrayAdapter</a>.</p>
+<p>First, let show the MainActivity.java source code:</p>
+<div id="highlighter_301967" class="syntaxhighlighter  "><div class="bar   "><div class="toolbar"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_301967_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_301967" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="keyword">package</code> <code class="plain">com.jms.loadimagewithasynctask;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.app.Activity;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.os.Bundle;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.view.Menu;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.widget.ListView;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="keyword">public</code> <code class="keyword">class</code> <code class="plain">MainActivity </code><code class="keyword">extends</code> <code class="plain">Activity {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">private</code> <code class="plain">String[] imageURLArray = </code><code class="keyword">new</code> <code class="plain">String[]{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7315/9046944633_881f24c4fa_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3777/9049174610_bf51be8a07_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7324/9046946887_d96a28376c_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm3.staticflickr.com/2828/9046946983_923887b17d_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3810/9046947167_3a51fffa0b_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3773/9049175264_b0ea30fa75_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3781/9046945893_f27db35c7e_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm6.staticflickr.com/5344/9049177018_4621cb63db_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7307/9046947621_67e0394f7b_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm6.staticflickr.com/5457/9046948185_3be564ac10_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3752/9046946459_a41fbfe614_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7403/9046946715_85f13b91e5_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7315/9046944633_881f24c4fa_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3777/9049174610_bf51be8a07_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>25</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7324/9046946887_d96a28376c_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>26</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm3.staticflickr.com/2828/9046946983_923887b17d_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>27</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3810/9046947167_3a51fffa0b_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>28</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3773/9049175264_b0ea30fa75_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>29</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3781/9046945893_f27db35c7e_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>30</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm6.staticflickr.com/5344/9049177018_4621cb63db_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>31</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7307/9046947621_67e0394f7b_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>32</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm6.staticflickr.com/5457/9046948185_3be564ac10_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>33</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm4.staticflickr.com/3752/9046946459_a41fbfe614_s.jpg"</code><code class="plain">,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>34</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">"http://farm8.staticflickr.com/7403/9046946715_85f13b91e5_s.jpg"</code><code class="plain">};</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>35</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">@Override</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>36</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">protected</code> <code class="keyword">void</code> <code class="plain">onCreate(Bundle savedInstanceState) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>37</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">super</code><code class="plain">.onCreate(savedInstanceState);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>38</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">setContentView(R.layout.main);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>39</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>40</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ListView listView = (ListView)</code><code class="keyword">this</code><code class="plain">.findViewById(R.id.listView);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>41</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ImageAdapter imageAdapter = </code><code class="keyword">new</code> <code class="plain">ImageAdapter(</code><code class="keyword">this</code><code class="plain">, R.layout.imageitem, imageURLArray);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>42</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">listView.setAdapter(imageAdapter);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>43</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>44</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>45</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">@Override</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>46</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">public</code> <code class="keyword">boolean</code> <code class="plain">onCreateOptionsMenu(Menu menu) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>47</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// Inflate the menu; this adds items to the action bar if it is present.</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>48</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">getMenuInflater().inflate(R.menu.main, menu);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>49</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="keyword">true</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>50</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>51</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>52</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div></div></div>
+<p>In the MainActivity class, we define an array of image url for ListView to download and show. We are using one customized ArrayAdapter to generate the row view for ListView. Now, let’s see the source code of ImageAdapter class.</p>
+<div id="highlighter_290926" class="syntaxhighlighter  "><div class="bar                       show"><div class="toolbar"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_290926_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_290926" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="keyword">package</code> <code class="plain">com.jms.loadimagewithasynctask;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="keyword">import</code> <code class="plain">java.io.IOException;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="keyword">import</code> <code class="plain">java.net.URL;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.app.Activity;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.content.Context;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.graphics.Bitmap;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.graphics.BitmapFactory;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.util.Log;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.view.LayoutInflater;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.view.View;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.view.ViewGroup;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.widget.ArrayAdapter;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="keyword">import</code> <code class="plain">android.widget.ImageView;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="keyword">public</code> <code class="keyword">class</code> <code class="plain">ImageAdapter </code><code class="keyword">extends</code> <code class="plain">ArrayAdapter&lt;String&gt; {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">private</code> <code class="plain">String[] imageURLArray;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">private</code> <code class="plain">LayoutInflater inflater;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">public</code> <code class="plain">ImageAdapter(Context context, </code><code class="keyword">int</code> <code class="plain">textViewResourceId,</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">String[] imageArray) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">super</code><code class="plain">(context, textViewResourceId, imageArray);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO Auto-generated constructor stub</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>25</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>26</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">inflater = ((Activity)context).getLayoutInflater();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>27</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">imageURLArray = imageArray;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>28</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>29</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>30</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">private</code> <code class="keyword">static</code> <code class="keyword">class</code> <code class="plain">ViewHolder {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>31</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ImageView imageView;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>32</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>33</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>34</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">@Override</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>35</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">public</code> <code class="plain">View getView(</code><code class="keyword">int</code> <code class="plain">position, View convertView, ViewGroup parent) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>36</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO Auto-generated method stub</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>37</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ViewHolder viewHolder = </code><code class="keyword">null</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>38</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(convertView == </code><code class="keyword">null</code><code class="plain">) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>39</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">convertView = inflater.inflate(R.layout.imageitem, </code><code class="keyword">null</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>40</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>41</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder = </code><code class="keyword">new</code> <code class="plain">ViewHolder();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>42</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.imageView = (ImageView)convertView.findViewById(R.id.testImage);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>43</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">convertView.setTag(viewHolder);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>44</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>45</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>46</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder = (ViewHolder)convertView.getTag();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>47</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>48</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//load image directly</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>49</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">Bitmap imageBitmap = </code><code class="keyword">null</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>50</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">try</code> <code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>51</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">URL imageURL = </code><code class="keyword">new</code> <code class="plain">URL(imageURLArray[position]);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>52</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">imageBitmap = BitmapFactory.decodeStream(imageURL.openStream());</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>53</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.imageView.setImageBitmap(imageBitmap);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>54</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">} </code><code class="keyword">catch</code> <code class="plain">(IOException e) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>55</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO: handle exception</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>56</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">Log.e(</code><code class="string">"error"</code><code class="plain">, </code><code class="string">"Downloading Image Failed"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>57</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.imageView.setImageResource(R.drawable.postthumb_loading);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>58</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>59</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>60</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">convertView;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>61</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>62</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div></div></div>
+<p>Currently, we have finished the basic of the requirement. We create a ListView and show the images in the ListView. However, it is a big problem when you compile and run the app in your devices. The ListView response is horrible slow and sometimes it looks like no response at all when we drag the ListView up and down. That is because we are downloading the image on the main thread or the UI thread. To solve ListView hang problem when downloading the image, we have to move the downloading logic in a different thread.</p>
+<h3>Download Image in AsyncTask Example</h3>
+<p>As Android developers guide mentioned, AsyncTask must be subclassed to be used. Therefore, we will create subclass, DownloadAsyncTask, in our ImageAdapter. Once the ListView request a row View from ImageAdapter, we will start a new AsyncTask and download the image in the background. In the DownloadAsyncTask class, we will override the doInBackground method which will be called to start download the image and onPostExecute method which will update our ListView when the image downloading in AsyncTask finished. Here is the subclass of AsyncTask:</p>
+<div id="highlighter_444103" class="syntaxhighlighter  "><div class="bar   "><div class="toolbar"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_444103_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_444103" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="keyword">private</code> <code class="keyword">class</code> <code class="plain">DownloadAsyncTask </code><code class="keyword">extends</code> <code class="plain">AsyncTask&lt;ViewHolder, Void, ViewHolder&gt; {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">@Override</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">protected</code> <code class="plain">ViewHolder doInBackground(ViewHolder... params) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO Auto-generated method stub</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//load image directly</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ViewHolder viewHolder = params[</code><code class="value">0</code><code class="plain">];</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">try</code> <code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">URL imageURL = </code><code class="keyword">new</code> <code class="plain">URL(viewHolder.imageURL);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.bitmap = BitmapFactory.decodeStream(imageURL.openStream());</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">} </code><code class="keyword">catch</code> <code class="plain">(IOException e) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO: handle exception</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">Log.e(</code><code class="string">"error"</code><code class="plain">, </code><code class="string">"Downloading Image Failed"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.bitmap = </code><code class="keyword">null</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">viewHolder;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">@Override</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">protected</code> <code class="keyword">void</code> <code class="plain">onPostExecute(ViewHolder result) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO Auto-generated method stub</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(result.bitmap == </code><code class="keyword">null</code><code class="plain">) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">result.imageView.setImageResource(R.drawable.postthumb_loading);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>25</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">} </code><code class="keyword">else</code> <code class="plain">{</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>26</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">result.imageView.setImageBitmap(result.bitmap);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>27</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>28</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>29</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div></div></div>
+<h3>Using AsyncTask to Download Images</h3>
+<p>As you can see, we move all the image downloading code in AsyncTask now. To instantiate the subclass of AsyncTask and start to download the image, we have to change our getView function a little bit. Instead of loading the image immediately in getView, we create a new AsyncTask class and call AsyncTask.execute every time. Here is the example code:</p>
+<div id="highlighter_55133" class="syntaxhighlighter  "><div class="bar   "><div class="toolbar"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#viewSource" title="view plain" class="item viewSource" style="width: 16px; height: 16px;">view plain</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_55133_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_55133" menu="false" src="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf"></div><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="color1">@Override</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="keyword">public</code> <code class="plain">View getView(</code><code class="keyword">int</code> <code class="plain">position, View convertView, ViewGroup parent) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">// TODO Auto-generated method stub</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ViewHolder viewHolder = </code><code class="keyword">null</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code><code class="plain">(convertView == </code><code class="keyword">null</code><code class="plain">) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">convertView = inflater.inflate(R.layout.imageitem, </code><code class="keyword">null</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder = </code><code class="keyword">new</code> <code class="plain">ViewHolder();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.imageView = (ImageView)convertView.findViewById(R.id.testImage);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">convertView.setTag(viewHolder);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder = (ViewHolder)convertView.getTag();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">viewHolder.imageURL = imageURLArray[position];</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">new</code> <code class="plain">DownloadAsyncTask().execute(viewHolder);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">convertView;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="plain">}</code></td></tr></tbody></table></div></div></div>
+<p>That’s it. Now you can compile and try the new app in your device. The performance is getting much better. The ListView scrolls smoothly and image downloading also works fine. If you still have problems about downloading images in ListView, you can leave the reply and I will answer your questions if I can. </p>
+<p>Here you can <a href="http://jmsliu.com/example/androidimagewithasynctask/LoadImageWithAsynctask.apk" title="Download Images in AsyncTask in ListView">download this example .apk file and install it on your device</a>.</p>
+<div id="attachment_1405" class="wp-caption alignnone" style="width: 178px">
+<a href="http://jmsliu.com/wp-content/uploads/2013/06/device-2013-06-15-205022.png"><img src="./Download Images by AsyncTask in ListView Android Example_files/device-2013-06-15-205022-180x300.png" alt="device-2013-06-15-205022" width="180" height="300" class="alignnone size-medium wp-image-1467"></a></div>
+<h3>Get Example Source Code at <span style="color: #ff0000;">$0.99</span></h3>
+<form action="http://jmsliu.com/digitalgoods/checkout.php" method="POST" target="PPDGFrame"><input type="image" name="paypal_submit" id="paypal_submit" src="./Download Images by AsyncTask in ListView Android Example_files/btn_dg_pay_w_paypal.gif" border="0" align="top" alt="Pay with PayPal"><input type="hidden" name="trackID" value="51bc6a4abf031"><br>
+</form>
+<p><script src="./Download Images by AsyncTask in ListView Android Example_files/dg.js" type="text/javascript"></script><script>
+	var dg = new PAYPAL.apps.DGFlow(
+	{
+		trigger: 'paypal_submit',
+		expType: 'instant'
+	});
+</script><br>
+You will get whole “Downloading Images by AsyncTask in ListView” Android source code at $0.99. With this source code, you can do everything you want:</p>
+<ul>
+<li>Load your own images from your server;</li>
+<li>Monetize the app with your own AdMob publish id;</li>
+<li>Use the source code in your own project;</li>
+<li>Publish this app in your android develop account;</li>
+</ul>
+	
+							
+							
+					</div>	
+				</div>
+	
+								
+			<div class="hl"></div>
+	<div class="post-footer">
+					<div class="left">
+							</div>
+
+
+<!-- twitter -->
+<div style="float:left; padding: 10px 0 0 0;  margin: 0 0 0 12px;">
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./Download Images by AsyncTask in ListView Android Example_files/tweet_button.e00c464da75b252cb1a028400793cadc.en.html" style="position: static; visibility: visible; width: 78px; height: 20px;" data-url="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html"></iframe>
+</div>
+
+<!-- facebook -->
+<div style="float:left; margin: 10px 0 0 5px;">
+    <div class="fb-like fb_iframe_widget" data-href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=0&amp;href=http%3A%2F%2Fjmsliu.com%2F1431%2Fdownload-images-by-asynctask-in-listview-android-example.html&amp;layout=button_count&amp;locale=en_GB&amp;sdk=joey&amp;share=false&amp;show_faces=false"><span style="vertical-align: bottom; width: 76px; height: 20px;"><iframe name="f1e462c6c8" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Download Images by AsyncTask in ListView Android Example_files/like.html" style="border: none; visibility: visible; width: 76px; height: 20px;" class=""></iframe></span></div>
+</div>
+
+<!-- Place this tag where you want the +1 button to render. -->
+<div style="float:left; margin: 8px 0 0 20px;">
+    <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 106px; height: 24px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 106px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1447645946411" name="I0_1447645946411" src="./Download Images by AsyncTask in ListView Android Example_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+</div>
+
+
+
+			<div class="right">
+				<a href="http://twitter.com/home/?status=Download%20Images%20by%20AsyncTask%20in%20ListView%20Android%20Example%20http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html" title="Post At Twitter" rel="nofollow" target="_blank"><img src="./Download Images by AsyncTask in ListView Android Example_files/ico-soc5.gif" alt="Digg"></a> 
+
+				<a href="http://del.icio.us/post?url=http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html&title=Download%20Images%20by%20AsyncTask%20in%20ListView%20Android%20Example" title="Bookmark at Delicious" rel="nofollow" target="_blank"><img src="./Download Images by AsyncTask in ListView Android Example_files/ico-soc1.gif" alt="Delicious"></a>				
+				
+				<a href="http://digg.com/submit?phase=2&url=http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html&title=Download%20Images%20by%20AsyncTask%20in%20ListView%20Android%20Example" title="Bookmark at Digg" rel="nofollow" target="_blank"><img src="./Download Images by AsyncTask in ListView Android Example_files/ico-soc4.gif" alt="Digg"></a> 
+				
+			</div>
+				<br class="fix">
+		
+	</div>		</div><!--post -->
+
+	</div>
+	
+			<div class="tags">
+			Tagged with: <a href="http://jmsliu.com/tag/android" rel="tag">Android</a>&nbsp;
+		</div>
+	
+			<div class="post-nav"> <span class="previous"><a href="http://jmsliu.com/1390/rss-reader-app-android-tutorial-1-listview-and-arrayadapter.html" rel="prev">Rss Reader App Android Tutorial 1: ListView and ArrayAdapter</a></span> <span class="next"><a href="http://jmsliu.com/1482/adding-admob-banner-in-android-listview-header.html" rel="next">Adding Admob Banner in Android ListView Header</a></span></div>
+		
+	<div class="clear"></div>
+	
+				
+						<div class="postwrap commentswrap ">	
+<div class="hentry">		
+	<div class="copy"> 
+<!-- You can start editing here. -->
+
+	<h3 id="comments">42 Responses to “Download Images by AsyncTask in ListView Android Example”</h3>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1 parent" id="comment-44357">
+				<div id="div-comment-44357" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/4f078248f5516cd7106ca8e4efd2904b" srcset="http://1.gravatar.com/avatar/4f078248f5516cd7106ca8e4efd2904b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Pamir Cevikogullari</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-44357">
+			June 20, 2013 at 5:21 am</a>		</div>
+
+		<p>Hi, my code works fine but there is a problem. When I scroll the list view a new images appers which are downloaded from url but when I scrool back, the images download again. It is like refreshing the images. How can I solve it?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=44357#respond" onclick="return addComment.moveForm( &quot;div-comment-44357&quot;, &quot;44357&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Pamir Cevikogullari">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2 parent" id="comment-44379">
+				<div id="div-comment-44379" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-44379">
+			June 20, 2013 at 10:41 am</a>		</div>
+
+		<p>Hi Pamir,</p>
+<p>Because of the performance, ViewList will reuse the View which is used in hidden list row. Therefore, there maybe only 5 Views existing to serve the whole ViewList. And you will see that images are refreshed.</p>
+<p>In my example, there is no cache mechanism. I think the http request may cache the image. To make it more efficient, it’s better to cache the images which is downloaded. Then, we don’t need to load image from internet everytime.</p>
+<p>I think I will update my example later to support the local cache.</p>
+<p>Thanks</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=44379#respond" onclick="return addComment.moveForm( &quot;div-comment-44379&quot;, &quot;44379&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3 parent" id="comment-44427">
+				<div id="div-comment-44427" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/4f078248f5516cd7106ca8e4efd2904b" srcset="http://1.gravatar.com/avatar/4f078248f5516cd7106ca8e4efd2904b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Pamir Cevikogullari</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-44427">
+			June 21, 2013 at 1:59 am</a>		</div>
+
+		<p>Many thanks for your help!</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=44427#respond" onclick="return addComment.moveForm( &quot;div-comment-44427&quot;, &quot;44427&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Pamir Cevikogullari">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-4 parent" id="comment-176935">
+				<div id="div-comment-176935" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/514a9b33f295cda8adc5976bbadca520" srcset="http://2.gravatar.com/avatar/514a9b33f295cda8adc5976bbadca520?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Jasper</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-176935">
+			May 19, 2014 at 6:35 am</a>		</div>
+
+		<p>Do you already have an example with local cache support?</p>
+<p>Thanks in advance</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=176935#respond" onclick="return addComment.moveForm( &quot;div-comment-176935&quot;, &quot;176935&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Jasper">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-5" id="comment-177024">
+				<div id="div-comment-177024" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-177024">
+			May 19, 2014 at 12:04 pm</a>		</div>
+
+		<p>Hello Jasper,</p>
+<p>If you want to find a way for local cache, you may check this tutorial:<br>
+<a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html" rel="nofollow">Android Save And Load Downloading File Locally</a></p>
+<p>Best Regards<br>
+James</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-77199">
+				<div id="div-comment-77199" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/7f5a9c883884174dfedd4a3e141e977b" srcset="http://1.gravatar.com/avatar/7f5a9c883884174dfedd4a3e141e977b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">tomayyyy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-77199">
+			December 11, 2013 at 2:57 am</a>		</div>
+
+		<p>Any suggestions for changable url? I mean e.g: <a href="http://www.example.com/content/changable/img/" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-comment&#39;, &#39;http://www.example.com/content/changable/img/&#39;, &#39;http://www.example.com/content/changable/img/&#39;);" rel="nofollow">http://www.example.com/content/changable/img/</a> ???</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=77199#respond" onclick="return addComment.moveForm( &quot;div-comment-77199&quot;, &quot;77199&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to tomayyyy">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2 parent" id="comment-77329">
+				<div id="div-comment-77329" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-77329">
+			December 11, 2013 at 9:39 am</a>		</div>
+
+		<p>Hi Tomay,</p>
+<p>To change the image, it is quite simple. Just change the data array and update the adapter.</p>
+<p>Thanks</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=77329#respond" onclick="return addComment.moveForm( &quot;div-comment-77329&quot;, &quot;77329&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-77458">
+				<div id="div-comment-77458" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/7f5a9c883884174dfedd4a3e141e977b" srcset="http://1.gravatar.com/avatar/7f5a9c883884174dfedd4a3e141e977b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">tomayyyy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-77458">
+			December 11, 2013 at 4:25 pm</a>		</div>
+
+		<p>I mean one element is dynamic, e.g: content/aa/img, or content /bb/img, any example for it ?:) Thank you</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=77458#respond" onclick="return addComment.moveForm( &quot;div-comment-77458&quot;, &quot;77458&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to tomayyyy">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-97861">
+				<div id="div-comment-97861" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/8f8f6381a23333d68c75d765b60d0329" srcset="http://2.gravatar.com/avatar/8f8f6381a23333d68c75d765b60d0329?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Andrea</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-97861">
+			January 28, 2014 at 12:56 am</a>		</div>
+
+		<p>Hi James,<br>
+I’ve bought this source code but I’ve a question: where can I put this code in the Rss feed reader example? </p>
+<p>Because I’m doing a feed reader with your code but I need to download the images indicated in the feed. How can I do this?</p>
+<p>Thanks for all</p>
+<p>Andrea</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=97861#respond" onclick="return addComment.moveForm( &quot;div-comment-97861&quot;, &quot;97861&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Andrea">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2" id="comment-97992">
+				<div id="div-comment-97992" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-97992">
+			January 28, 2014 at 11:24 am</a>		</div>
+
+		<p>In RSS Reader, you have to build an data array to store that images. After that, you can apply this code inside. In my tutorial and tips, I aim to solve one problem at a time. I am not suppose to help solve a project.</p>
+<p>Thanks.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=97992#respond" onclick="return addComment.moveForm( &quot;div-comment-97992&quot;, &quot;97992&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-209263">
+				<div id="div-comment-209263" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/7da727778edf383960bbdd8594c3618c" srcset="http://1.gravatar.com/avatar/7da727778edf383960bbdd8594c3618c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Elia</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-209263">
+			June 20, 2014 at 1:48 am</a>		</div>
+
+		<p>Hi,<br>
+I bought the sample source, but does not contain the part relating to Google AD.<br>
+I need the complete source code.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=209263#respond" onclick="return addComment.moveForm( &quot;div-comment-209263&quot;, &quot;209263&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Elia">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2" id="comment-209601">
+				<div id="div-comment-209601" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-209601">
+			June 20, 2014 at 10:03 am</a>		</div>
+
+		<p>Hello,</p>
+<p>This tutorial doesn’t cover the Google AD tutorial. You’d better to check this post:<br>
+<a href="http://jmsliu.com/1482/adding-admob-banner-in-android-listview-header.html" rel="nofollow">Adding Admob Banner in Android ListView Header</a></p>
+<p>Thanks</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=209601#respond" onclick="return addComment.moveForm( &quot;div-comment-209601&quot;, &quot;209601&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-322508">
+				<div id="div-comment-322508" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/43c883848c89e195892d6b1baec884eb" srcset="http://1.gravatar.com/avatar/43c883848c89e195892d6b1baec884eb?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Sapi</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-322508">
+			September 29, 2014 at 3:48 pm</a>		</div>
+
+		<p>Hi, where come from “imageitem” ?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=322508#respond" onclick="return addComment.moveForm( &quot;div-comment-322508&quot;, &quot;322508&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Sapi">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2 parent" id="comment-335507">
+				<div id="div-comment-335507" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-335507">
+			October 8, 2014 at 10:14 am</a>		</div>
+
+		<p>It’s the layout of ListView row.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=335507#respond" onclick="return addComment.moveForm( &quot;div-comment-335507&quot;, &quot;335507&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3 parent" id="comment-544739">
+				<div id="div-comment-544739" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/49aaafd8e7217d1f5a0147efa1201381" srcset="http://1.gravatar.com/avatar/49aaafd8e7217d1f5a0147efa1201381?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">jeenal</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-544739">
+			March 28, 2015 at 8:28 pm</a>		</div>
+
+		<p>Layout of Listview row? Can you explain in detail.Didn’t get you</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=544739#respond" onclick="return addComment.moveForm( &quot;div-comment-544739&quot;, &quot;544739&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to jeenal">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-4" id="comment-545036">
+				<div id="div-comment-545036" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-545036">
+			March 29, 2015 at 11:24 am</a>		</div>
+
+		<p>The Layout of Listview row is very simple. You can put a ImageView in a Relativelayout</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=545036#respond" onclick="return addComment.moveForm( &quot;div-comment-545036&quot;, &quot;545036&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-336411">
+				<div id="div-comment-336411" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/da054e2c8d8fd5360b749ea416502221" srcset="http://1.gravatar.com/avatar/da054e2c8d8fd5360b749ea416502221?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Srikanth</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-336411">
+			October 9, 2014 at 1:13 am</a>		</div>
+
+		<p>Hi,</p>
+<p>I have bought the code and also installed the apk in my SAMSUNG mobile, I could see all the  wallpapers, but I could not download any of them. When I click on each image, nothing is happening</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=336411#respond" onclick="return addComment.moveForm( &quot;div-comment-336411&quot;, &quot;336411&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Srikanth">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2" id="comment-337000">
+				<div id="div-comment-337000" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-337000">
+			October 9, 2014 at 10:17 am</a>		</div>
+
+		<p>Hi, this source code is not for wallpaper app. In this post, I only show you how to load image in ListView row. If you want to check the wallpaper app source, please check this app:</p>
+<p><a href="http://jmsliu.com/2455/android-crop-image-and-assign-wallpaper.html" rel="nofollow">http://jmsliu.com/2455/android-crop-image-and-assign-wallpaper.html</a></p>
+<p>Thanks</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=337000#respond" onclick="return addComment.moveForm( &quot;div-comment-337000&quot;, &quot;337000&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-417891">
+				<div id="div-comment-417891" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/671e3da99797618a978198133f0d6378" srcset="http://0.gravatar.com/avatar/671e3da99797618a978198133f0d6378?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">priya</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-417891">
+			November 19, 2014 at 5:52 pm</a>		</div>
+
+		<p>thankyou…! its really useful for me</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=417891#respond" onclick="return addComment.moveForm( &quot;div-comment-417891&quot;, &quot;417891&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to priya">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2 parent" id="comment-468019">
+				<div id="div-comment-468019" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/763358c5485c727babdc76862c911be4" srcset="http://1.gravatar.com/avatar/763358c5485c727babdc76862c911be4?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">santhosh</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-468019">
+			December 18, 2014 at 3:35 pm</a>		</div>
+
+		<p>i want to download that source code</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=468019#respond" onclick="return addComment.moveForm( &quot;div-comment-468019&quot;, &quot;468019&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to santhosh">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-3" id="comment-468036">
+				<div id="div-comment-468036" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-468036">
+			December 18, 2014 at 3:55 pm</a>		</div>
+
+		<p>Make the purchase and the download link will appear.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=468036#respond" onclick="return addComment.moveForm( &quot;div-comment-468036&quot;, &quot;468036&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-555796">
+				<div id="div-comment-555796" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/2e0eef78c8b7818dd38a9588d7279a20" srcset="http://2.gravatar.com/avatar/2e0eef78c8b7818dd38a9588d7279a20?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Salim</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-555796">
+			April 25, 2015 at 8:22 pm</a>		</div>
+
+		<p>Hi, firstly thank you very much this tutorial. I get an error like this “Downloading Image Failed” can you help me about it?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=555796#respond" onclick="return addComment.moveForm( &quot;div-comment-555796&quot;, &quot;555796&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Salim">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2 parent" id="comment-555826">
+				<div id="div-comment-555826" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-555826">
+			April 25, 2015 at 10:07 pm</a>		</div>
+
+		<p>I downloaded my app on this page and check on my android phone. It seems to work properly.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=555826#respond" onclick="return addComment.moveForm( &quot;div-comment-555826&quot;, &quot;555826&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3 parent" id="comment-555827">
+				<div id="div-comment-555827" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/2e0eef78c8b7818dd38a9588d7279a20" srcset="http://2.gravatar.com/avatar/2e0eef78c8b7818dd38a9588d7279a20?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://-/" rel="external nofollow" class="url">Salim</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-555827">
+			April 25, 2015 at 10:10 pm</a>		</div>
+
+		<p>can you give me your email address please. i will send you my code. i could not do it. please help me?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=555827#respond" onclick="return addComment.moveForm( &quot;div-comment-555827&quot;, &quot;555827&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Salim">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-4" id="comment-555840">
+				<div id="div-comment-555840" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/2e0eef78c8b7818dd38a9588d7279a20" srcset="http://2.gravatar.com/avatar/2e0eef78c8b7818dd38a9588d7279a20?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://-/" rel="external nofollow" class="url">Salim</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-555840">
+			April 25, 2015 at 11:29 pm</a>		</div>
+
+		<p>thank you very much i solve it. I forget allow the permission from AndroidMainfes.</p>
+<p>“”</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=555840#respond" onclick="return addComment.moveForm( &quot;div-comment-555840&quot;, &quot;555840&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Salim">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-561108">
+				<div id="div-comment-561108" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/52da182a25d759ba9bb4ceda0f08f72e" srcset="http://2.gravatar.com/avatar/52da182a25d759ba9bb4ceda0f08f72e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">venkat</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561108">
+			May 12, 2015 at 5:15 am</a>		</div>
+
+		<p>private class DownloadAsyncTask extends AsyncTask<br>
+asking create class ??</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561108#respond" onclick="return addComment.moveForm( &quot;div-comment-561108&quot;, &quot;561108&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to venkat">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-561110">
+				<div id="div-comment-561110" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/52da182a25d759ba9bb4ceda0f08f72e" srcset="http://2.gravatar.com/avatar/52da182a25d759ba9bb4ceda0f08f72e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">venkat</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561110">
+			May 12, 2015 at 5:16 am</a>		</div>
+
+		<p>private class DownloadAsyncTask extends AsyncTask </p>
+<p>here ViewHolder showing error and asking to create class</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561110#respond" onclick="return addComment.moveForm( &quot;div-comment-561110&quot;, &quot;561110&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to venkat">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor odd alt depth-2" id="comment-561188">
+				<div id="div-comment-561188" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561188">
+			May 12, 2015 at 9:56 am</a>		</div>
+
+		<p>Then you need to create the ViewHolder class. BTW, in my source code example, I already show the ViewHolder source code there.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561188#respond" onclick="return addComment.moveForm( &quot;div-comment-561188&quot;, &quot;561188&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-561589">
+				<div id="div-comment-561589" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/52da182a25d759ba9bb4ceda0f08f72e" srcset="http://2.gravatar.com/avatar/52da182a25d759ba9bb4ceda0f08f72e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">venkat</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561589">
+			May 13, 2015 at 8:23 pm</a>		</div>
+
+		<p>i’m trying to load 21 images from my Json data its loading fine,  but when scrolling images are changing why??</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561589#respond" onclick="return addComment.moveForm( &quot;div-comment-561589&quot;, &quot;561589&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to venkat">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-561625">
+				<div id="div-comment-561625" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/550c52ec82b61a9a5255a10091b9c9cf" srcset="http://2.gravatar.com/avatar/550c52ec82b61a9a5255a10091b9c9cf?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">siri</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561625">
+			May 13, 2015 at 10:52 pm</a>		</div>
+
+		<p>Using private for DownloadAsyncTask showing error ??</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561625#respond" onclick="return addComment.moveForm( &quot;div-comment-561625&quot;, &quot;561625&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to siri">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2" id="comment-561701">
+				<div id="div-comment-561701" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561701">
+			May 14, 2015 at 9:42 am</a>		</div>
+
+		<p>Please check it carefully before you report the error. The source code is working properly for others.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561701#respond" onclick="return addComment.moveForm( &quot;div-comment-561701&quot;, &quot;561701&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-561766">
+				<div id="div-comment-561766" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/550c52ec82b61a9a5255a10091b9c9cf" srcset="http://2.gravatar.com/avatar/550c52ec82b61a9a5255a10091b9c9cf?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Chiru</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561766">
+			May 14, 2015 at 4:38 pm</a>		</div>
+
+		<p>hello sir, can you tell me how to set onclickListener for those images ?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561766#respond" onclick="return addComment.moveForm( &quot;div-comment-561766&quot;, &quot;561766&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Chiru">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2" id="comment-561810">
+				<div id="div-comment-561810" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-561810">
+			May 14, 2015 at 9:48 pm</a>		</div>
+
+		<p>Basic question, you can search on google. It will give you the best answer.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=561810#respond" onclick="return addComment.moveForm( &quot;div-comment-561810&quot;, &quot;561810&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-573018">
+				<div id="div-comment-573018" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3d934fd0973994054ef98aec23ae2f5e" srcset="http://0.gravatar.com/avatar/3d934fd0973994054ef98aec23ae2f5e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">pullarao</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-573018">
+			June 24, 2015 at 10:47 pm</a>		</div>
+
+		<p>Images are downloading,But when i am scrolling images are downloading again..plz help me in this issue<br>
+Thanks inadvance</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=573018#respond" onclick="return addComment.moveForm( &quot;div-comment-573018&quot;, &quot;573018&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to pullarao">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2" id="comment-573174">
+				<div id="div-comment-573174" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-573174">
+			June 25, 2015 at 9:44 am</a>		</div>
+
+		<p>Hi, one question, what do you mean “when you are scrolling images are downloading again”? Can you please describe your problem more clearly?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=573174#respond" onclick="return addComment.moveForm( &quot;div-comment-573174&quot;, &quot;573174&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-575554">
+				<div id="div-comment-575554" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/95b742d1293465a9958a06a7b27273ea" srcset="http://0.gravatar.com/avatar/95b742d1293465a9958a06a7b27273ea?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Gonzalo Infante</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-575554">
+			July 6, 2015 at 4:09 am</a>		</div>
+
+		<p>I think your code is prone to errors due to possible configuration changes (like orientation) recreating the activity, so the viewholders keep pointing to the old images, as well as leaking them.<br>
+This behavior could be tested (haven’t tested it myself) when scrolling on a slow connection device and rotating the device.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=575554#respond" onclick="return addComment.moveForm( &quot;div-comment-575554&quot;, &quot;575554&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Gonzalo Infante">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-james bypostauthor even thread-odd thread-alt depth-1" id="comment-575621">
+				<div id="div-comment-575621" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-575621">
+			July 6, 2015 at 10:14 am</a>		</div>
+
+		<p>I think after you make some configuration changes, like orientation, the app will recreating the activity. But this is not the reason why the viewholders keep pointing to the old images.</p>
+<p>For ListView in Android, it will only create the necessary number of itemview to fit the space. When you scroll the ListView, it will re-use the old itemview for the new row. So you will see the old image in the new row.</p>
+<p>To avoid the app downloading the images all the time, you can implement some cache mechanism. So the refresh speed will be fast.</p>
+<p>For advanced usage, please check this two post:</p>
+<p><a href="http://jmsliu.com/2682/rss-reader-android-app-tutorial-6-show-image-in-listview.html" rel="nofollow">Show Image In Listview</a><br>
+<a href="http://jmsliu.com/1954/android-save-downloading-file-locally.html" rel="nofollow">Android Save And Load Downloading File Locally</a></p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=575621#respond" onclick="return addComment.moveForm( &quot;div-comment-575621&quot;, &quot;575621&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-580138">
+				<div id="div-comment-580138" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/7341f7812f85b44df988b6c565072d9d" srcset="http://1.gravatar.com/avatar/7341f7812f85b44df988b6c565072d9d?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Giorgi</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-580138">
+			July 23, 2015 at 10:14 pm</a>		</div>
+
+		<p>in DownloadAsyncTask class cannot resolve symbols:<br>
+imageURL and bitmap on viewHolder object..</p>
+<p>btw the ViewHolder Class don’t have a bitmap field..</p>
+<p>any clarification?</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=580138#respond" onclick="return addComment.moveForm( &quot;div-comment-580138&quot;, &quot;580138&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Giorgi">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2" id="comment-582217">
+				<div id="div-comment-582217" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-582217">
+			July 31, 2015 at 8:09 pm</a>		</div>
+
+		<p>You need to update the ViewHolder class according to your needs. Or you can get the full source code.</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=582217#respond" onclick="return addComment.moveForm( &quot;div-comment-582217&quot;, &quot;582217&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-584113">
+				<div id="div-comment-584113" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/935da7d4d86c3a82dc45d1b4d706e491" srcset="http://0.gravatar.com/avatar/935da7d4d86c3a82dc45d1b4d706e491?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Roy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-584113">
+			August 8, 2015 at 6:37 am</a>		</div>
+
+		<p>hi James </p>
+<p>i just bought the sample source, and that work very well,<br>
+thank u.<br>
+where at the source code i should write the onclickListener  for each image.<br>
+thanks in adnavce</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=584113#respond" onclick="return addComment.moveForm( &quot;div-comment-584113&quot;, &quot;584113&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Roy">Reply</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-james bypostauthor even depth-2" id="comment-584426">
+				<div id="div-comment-584426" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/3cc78d9fb6e958be42870e8405d6a01c" srcset="http://0.gravatar.com/avatar/3cc78d9fb6e958be42870e8405d6a01c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">James Liu</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-584426">
+			August 9, 2015 at 9:15 am</a>		</div>
+
+		<p>Hello,</p>
+<p>You may check this post. Though I give an example about adding onClick event on a button, I think you can use the same approach to solve your problem. Here is the link:</p>
+<p><a href="http://jmsliu.com/2444/click-button-in-listview-and-get-item-position.html" rel="nofollow">http://jmsliu.com/2444/click-button-in-listview-and-get-item-position.html</a></p>
+<p>Best Regards<br>
+James</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=584426#respond" onclick="return addComment.moveForm( &quot;div-comment-584426&quot;, &quot;584426&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to James Liu">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-601384">
+				<div id="div-comment-601384" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Download Images by AsyncTask in ListView Android Example_files/f40eab8cd13f3c6e13649bec8597fbba" srcset="http://0.gravatar.com/avatar/f40eab8cd13f3c6e13649bec8597fbba?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="./Download Images by AsyncTask in ListView Android Example_files/Download Images by AsyncTask in ListView Android Example.html" rel="external nofollow" class="url">Tony</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#comment-601384">
+			October 7, 2015 at 8:14 pm</a>		</div>
+
+		<p>Awesome link. working perfectly</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html?replytocom=601384#respond" onclick="return addComment.moveForm( &quot;div-comment-601384&quot;, &quot;601384&quot;, &quot;respond&quot;, &quot;1431&quot; )" aria-label="Reply to Tony">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://jmsliu.com/1431/download-images-by-asynctask-in-listview-android-example.html#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div>
+
+	
+		<form action="http://jmsliu.com/wp-comments-post.php" method="post" id="commentform">
+
+		
+		<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true">
+		<label for="author"><small>Name (required)</small></label></p>
+
+		<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required="true">
+		<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+		<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+		<label for="url"><small>Website</small></label></p>
+
+		
+		
+		<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+		<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment">
+		<input type="hidden" name="comment_post_ID" value="1431" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+		</p>
+		<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="5a599d355c"></p><a id="clinkft1" href="http://themes.weboy.org/" title="Free WordPress Theme"></a><script type="text/javascript">clinkft1.innerHTML = "";</script><p style="display: none;"></p>
+			<input type="hidden" id="ak_js" name="ak_js" value="1447645946352"></form>
+
+</div> <!-- End Respond -->
+</div>
+</div>
+</div>			
+			
+	
+		
+	
+</div> <!-- end content -->
+</div>
+<div id="sidebar" class="fix">
+
+
+
+
+<!-- google plus -->
+<!-- Place this tag where you want the widget to render. -->
+<div style="margin-bottom: 10px;">
+<div id="___person_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 106px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 106px;" tabindex="0" vspace="0" width="100%" id="I1_1447645946417" name="I1_1447645946417" src="./Download Images by AsyncTask in ListView Android Example_files/person.html" data-gapiattached="true" title="+Badge"></iframe></div>
+</div>
+
+
+
+
+
+<!-- Ads 300x600 -->
+<!--
+<div style="margin-bottom: 20px; width: 278px; height: 415px; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #aaa; border-bottom: 1px solid #aaa; -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; overflow: hidden; background: #fff; padding: 10px 10px 0 10px;">
+<script id="mNCC" language="javascript">  medianet_width='300';  medianet_height= '600';  medianet_crid='296748494';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU24YGF7" language="javascript"></script> 
+</div>
+-->
+
+
+<!-- inner site ads -->
+<!--
+<div style="overflow:hidden;  border-radius: 5px; margin: 0 0 20px 0;">
+<a href="http://jmsliu.com/2812/hd-beauty-gallery-android-app.html">
+<img alt="hd beauty gallery featured image" src="http://jmsliu.com/wp-content/uploads/2015/03/website-featured-image-mini.png"/>
+</a>
+</div>
+-->
+
+
+
+				
+				
+
+	
+				
+					<div id="text-2" class="widget_text widget"><div class="winner">			<div class="textwidget"><h3 class="wtitle"><a href="http://jmsliu.com/products/jmsdgps/" title="JMS Digital Goods Ecommerce Platform" target="_blank">JMS Digital Goods Ecommerce Platform</a></h3>
+<div>
+PHP based payment and management system. It provides a easy way for you to manage and sell your digital goods and products on your website.
+</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/online-bootstrap-donation/" title="Online Bootstrap Donation Widget" target="_blank">Online Bootstrap Donation Widget</a></h3>
+<div>
+Bootstrap based online donation widget. It will help you collect donations easily on your own website.</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/sprite-sheet-decomposer/" title="Free Online Sprite Sheet Decomposer" target="_blank">Free Online Sprite Sheet Decomposer</a></h3>
+<div>
+Decompose and create animations from a sprite sheet easily. It will help you cut sprite sheet animation pictures into separate frame pictures.
+</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/google-translate-mp3-downloader/" title="Google Translate Voice MP3 Downloader" target="_blank">Google Translate Voice MP3 Downloader</a></h3>
+<div>
+Download word voice-over in one click. It will help you to get the word pronunciation mp3 file from Google Translate service.
+</div>
+
+<h3 class="wtitle"><a href="http://jmsliu.com/products/jms-rss-feed/" title="JMS Rss Feed" target="_blank">JMS Rss Feed Featured Image Plugin</a></h3>
+<div>
+Adds the featured image url in a tag into to your posts to the RSS feed.
+</div></div>
+		&nbsp;</div></div><div id="linkcat-40" class="widget_links widget"><div class="winner"><h3 class="wtitle">Featured Tutorials&nbsp;</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://jmsliu.com/209/add-google-admob-in-android-application.html">Admob in Android Application (Integrated with Google Play Service)</a></li>
+<li><a href="http://jmsliu.com/1390/rss-reader-app-android-tutorial-1-listview-and-arrayadapter.html">Android Rss Reader App Tutorial (1-5)</a></li>
+<li><a href="http://jmsliu.com/1879/android-gridview-example-in-real-wallpaper-app.html">Android Wallpaper App Tutorial (1-5)</a></li>
+<li><a href="http://jmsliu.com/1088/iphone-rss-reader-app-ios-tutorial-1-storyboard-ui-programming.html">iPhone Rss Reader App IOS Tutorial (1-4)</a></li>
+
+	</ul>
+&nbsp;</div></div>
+
+<!-- WordPress Popular Posts Plugin v3.2.2 [W] [monthly] [avg] [regular] -->
+<div id="wpp-3" class="popular-posts widget"><div class="winner">
+<h3 class="wtitle">Popular Posts&nbsp;</h3>
+<ul class="wpp-list">
+<li><a href="http://jmsliu.com/2444/click-button-in-listview-and-get-item-position.html" title="Click Button in ListView And Get Item Position" class="wpp-post-title" target="_self">Click Button in ListView And Get Item Position</a>  <span class="post-stats"><span class="wpp-views">85.61 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/2892/tablets-with-usb-port-review-2015.html" title="Tablets with USB Port Review 2015" class="wpp-post-title" target="_self">Tablets with USB Port Review 2015</a>  <span class="post-stats"><span class="wpp-views">73.77 views per day</span></span> </li>
+<li><a title="Download Images by AsyncTask in ListView Android Example" class="wpp-post-title" target="_self">Download Images by AsyncTask in ListView Android Example</a>  <span class="post-stats"><span class="wpp-views">63.23 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/1390/rss-reader-app-android-tutorial-1-listview-and-arrayadapter.html" title="Rss Reader App Android Tutorial 1: ListView and ArrayAdapter" class="wpp-post-title" target="_self">Rss Reader App Android Tutorial 1: ListView and ArrayAdapter</a>  <span class="post-stats"><span class="wpp-views">51.58 views per day</span></span> </li>
+<li><a href="http://jmsliu.com/2499/play-mp3-in-android-tutorial-android-mediaplayer-example.html" title="Play MP3 in Android Tutorial: Android Mediaplayer Example" class="wpp-post-title" target="_self">Play MP3 in Android Tutorial: Android Mediaplayer Example</a>  <span class="post-stats"><span class="wpp-views">51.55 views per day</span></span> </li>
+
+</ul>
+&nbsp;</div></div>
+<!-- End WordPress Popular Posts Plugin v3.2.2 -->
+<div id="categories-3" class="widget_categories widget"><div class="winner"><h3 class="wtitle">Categories&nbsp;</h3>		<ul>
+	<li class="cat-item cat-item-8"><a href="http://jmsliu.com/category/android">Android</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://jmsliu.com/category/android/android-tablet">Android Phone and Tablet</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://jmsliu.com/category/flash-and-flex-and-air" title="Articles about flash and flex">Flash Flex AIR</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://jmsliu.com/category/html5-2">HTML5</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://jmsliu.com/category/iphone-ipad-object-c">iPhone iPad Object-C</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://jmsliu.com/category/make-money-online">Make Money Online</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://jmsliu.com/category/others" title="All miscellaneous articles">Other Online Technology</a>
+</li>
+		</ul>
+&nbsp;</div></div>				
+										
+
+</div><!--/sidebar --></div>
+<div class="clear"></div>
+
+
+
+<div id="footer">
+	<div class="effect">
+		<div class="content">
+<span class="terms" style="padding: 0 20px;">
+ 2015  © All Rights Reserved by <a href="http://jmsliu.com/">Programming Guides and Tips</a>
+</span>
+<span><a href="http://jmsliu.com/privacy-policy">Privacy Policy</a></span>
+					
+			<div class="clear"></div>
+		</div>		
+	</div>
+
+
+</div>
+	<div class="clear"></div>
+
+ 	<hr class="hidden">
+
+  </div><!--/wrapper -->
+
+</div><!--/page -->
+
+<!-- Footer Scripts Go Here -->
+<!-- End Footer scripts -->
+
+    <!-- Start of StatCounter Code -->
+    <script>
+    <!-- 
+        var sc_project=10591210; 
+        var sc_security="6902d2db"; 
+      var sc_invisible=1;
+        var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    //-->
+document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js'></"+"script>");
+</script><script src="./Download Images by AsyncTask in ListView Android Example_files/counter.js"></script>
+<noscript>&lt;div class="statcounter"&gt;&lt;a title="web analytics" href="http://statcounter.com/"&gt;&lt;img class="statcounter" src="http://c.statcounter.com/10591210/0/6902d2db/1/" alt="web analytics" /&gt;&lt;/a&gt;&lt;/div&gt;</noscript>   
+    <!-- End of StatCounter Code -->
+<a id="clinkft2" href="http://weboy.org/" title="Weboy"></a><script type="text/javascript">clinkft2.innerHTML = "";</script><script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/shCore.js"></script>
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/shBrushJava.js"></script>
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/form.js"></script>
+<script type="text/javascript">//<![CDATA[
+SyntaxHighlighter.config.strings.expandSource="+ expand source";SyntaxHighlighter.config.strings.viewSource="view plain";SyntaxHighlighter.config.strings.copyToClipboard="copy to clipboard";SyntaxHighlighter.config.strings.copyToClipboardConfirmation="The code is in your clipboard now";SyntaxHighlighter.config.strings.print="print";SyntaxHighlighter.config.strings.help="?";SyntaxHighlighter.config.strings.noBrush="Can't find brush for: ";SyntaxHighlighter.config.strings.brushNotHtmlScript="Brush wasn't made for html-script option: ";SyntaxHighlighter.config.clipboardSwf="http://jmsliu.com/wp-content/plugins/syntax-highlighter/2.1.364/js/clipboard.swf";
+SyntaxHighlighter.all();
+//]]></script>
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/jquery.form.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/jmsliu.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Download Images by AsyncTask in ListView Android Example_files/scripts.js"></script>
+
+
+<!-- Twitter -->
+<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script src="./Download Images by AsyncTask in ListView Android Example_files/platform.js" async="" defer="" gapi_processed="true"></script>
+
+
+
+<!--facebook-->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_http" src="./Download Images by AsyncTask in ListView Android Example_files/wjDNIDNrTQG.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Facebook Cross Domain Communication Frame" aria-hidden="true" tabindex="-1" id="fb_xdm_frame_https" src="./Download Images by AsyncTask in ListView Android Example_files/wjDNIDNrTQG(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<iframe name="oauth2relay432209157" id="oauth2relay432209157" src="./Download Images by AsyncTask in ListView Android Example_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

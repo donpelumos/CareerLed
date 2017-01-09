@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="60dp"
+    android:gravity="center"
+    android:orientation="horizontal" android:background="@color/bg_color"
+    android:paddingTop="3dp" android:paddingBottom="3dp">
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/personal"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:id="@+id/fragment_title"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:text="Feed"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="end">
+        <ImageButton
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/bg_color"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/guide_icon"
+            android:id="@+id/guide_icon"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/notification_icon_case"
+            android:layout_marginRight="3dp">
+            <ImageButton
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center"
+                android:id="@+id/notification_icon"
+                android:scaleType="centerInside"
+                android:background="@color/bg_color"
+                android:src="@drawable/notification_icon"
+                />
+            <TextView
+                android:maxWidth="30dp"
+                android:minWidth="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:background="#ff0000"
+                android:padding="1dp"
+                android:textSize="16dp"
+                android:text="23"/>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

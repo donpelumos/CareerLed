@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/swiper">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="230dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/cover_pic"
+            android:src="@drawable/picture03"/>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/picture"
+            android:id="@+id/profile_pic"
+            android:scaleType="centerCrop"
+            android:layout_gravity="left|center"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right|center"
+            android:layout_marginEnd="10dp">
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="41dp"
+                android:id="@+id/message_icon"
+                android:scaleType="centerCrop"
+                android:clickable="true"
+                android:background="@color/bg_color"
+                android:src="@drawable/message_icon_new"/>
+            <TextView
+                android:maxWidth="40dp"
+                android:minWidth="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:background="#ff0000"
+                android:padding="1dp"
+                android:textSize="18dp"
+                android:text="5"/>
+        </FrameLayout>
+
+
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/bg_color"
+        android:alpha="0.8"
+        android:id="@+id/sub_swiper">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/picture"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="Surname + Firstname"
+            android:textColor="#ffffff"
+            android:textSize="23sp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scroller">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbg3"
+            android:layout_margin="15dp"
+            android:padding="18dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:text="Firstname"
+                android:background="#dfdfdf"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:text="Surname"
+                android:background="#f6f6f6"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:text="08023231212"
+                android:background="#dfdfdf"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:text="E-Mail Address"
+                android:background="#f6f6f6"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:id="@+id/bio"
+                android:layout_margin="4dp"
+                android:text="Brief Bio on the user which should not be more than 300 characters long."
+                android:background="#dfdfdf"
+                android:textSize="20sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="Hobbies"
+                android:textColor="#ffffff"
+                android:background="@color/bg_color"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="Coding, Programming, Playing Chess, Solving Maths, Studying Animals, Circuit Electronics, Hacking"
+                android:background="#f6f6f6"
+                android:textSize="22sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="Interests"
+                android:textColor="#ffffff"
+                android:background="@color/bg_color"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="Computer Science, Mathematics, Physics, Artificial Intelligence, Robotics, Programming, Electronics"
+                android:background="#dfdfdf"
+                android:textSize="22sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="Talents/Skills"
+                android:textColor="#ffffff"
+                android:background="@color/bg_color"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="Drawing, Writing, Computer Programming, Electronics Design"
+                android:background="#f6f6f6"
+                android:textSize="22sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="Certifications"
+                android:textColor="#ffffff"
+                android:background="@color/bg_color"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="Certification_1, Certification_2, Certification_3, Certification_4, Certification_5, Certification_6,
+                Certification_7"
+                android:background="#dfdfdf"
+                android:textSize="22sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

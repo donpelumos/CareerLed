@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jempton.careerled" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+        <activit
+            android:name=".ActivitySplashScreen"
+            android:label="@string/title_activity_splash_screen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activit>
+        <activity
+            android:name=".ActivityLoginPage"
+            android:label="@string/title_activity_login_page" >
+        </activity>
+        <activity
+            android:name=".ActivitySignUp"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".ActivityCourseSignUp"
+            android:label="@string/title_activity_course_sign_up" >
+        </activity>
+        <activity
+            android:name=".ActivityHobbiesSignUp"
+            android:label="@string/title_activity_hobbies_sign_up"
+            android:parentActivityName=".ActivityCourseSignUp" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityCourseSignUp" />
+        </activity>
+        <activity
+            android:name=".ActivityTalentsSignUp"
+            android:label="@string/title_activity_talents_sign_up"
+            android:parentActivityName=".ActivityHobbiesSignUp" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityHobbiesSignUp" />
+        </activity>
+        <activity
+            android:name=".ActivityInterestsSignUp"
+            android:label="Interests">
+        </activity>
+        <activity
+            android:name=".ActivityCertificationsSignUp"
+            android:label="@string/title_activity_certifications_sign_up"
+            android:parentActivityName=".ActivityTalentsSignUp" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityTalentsSignUp" />
+        </activity>
+        <activity
+            android:name=".ActivityProfileSignUp"
+            android:label="@string/title_activity_profile_sign_up"
+            android:parentActivityName=".ActivityCertificationsSignUp" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityCertificationsSignUp" />
+        </activity>
+        <activity
+            android:name=".ActivityHome"
+            android:label="Home"
+            android:icon="@mipmap/ic_launcher"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityProfilePageOther"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityImageShower"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityFeedback"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityProfilePageUser"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityReportIssue"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityAccount"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityForumChat"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityGroupMessage"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityGroupMessageChat"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityMessages"
+            android:label="Other Profile"
+            >
+        </activity>
+        <activity
+            android:name=".ActivityNotification"
+            android:label="Other Profile"
+            >
+        </activity>
+    </application>
+    <!--
+    android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            -->
+
+</manifest>

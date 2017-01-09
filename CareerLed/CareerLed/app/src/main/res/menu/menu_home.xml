@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jempton.careerled.ActivityHome"
+    >
+<!--
+    <item android:id="@+id/extra_icon1"
+        android:icon="@drawable/ic_launcher"
+        android:title="Launcher" app:showAsAction="always"/>
+
+    <item android:id="@+id/extra_icon2"
+        android:icon="@drawable/notification_icon"
+        android:title="Launcher" app:showAsAction="always"/>
+
+
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100"  app:showAsAction="never" />
+    <item android:id="@+id/action_settings2" android:title="@string/action_settings"
+        android:orderInCategory="100"  app:showAsAction="never" />
+-->
+</menu>
